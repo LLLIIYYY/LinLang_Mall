@@ -26,7 +26,7 @@
                 <label for="SubCategoryId" class="col-sm-2 control-label">二级类别</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="SubCategoryId" name="SubCategoryId">
-                        <option value="0">无</option>
+                        <option value="-1">无</option>
                     </select>
                 </div>
             </div>
@@ -37,6 +37,8 @@
                 <tr>
                     <td></td>
                     <td>编号</td>
+                    <td>一级分类</td>
+                    <td>二级分类</td>
                     <td>商品名</td>
                     <td>商品价格</td>
                     <td>简介</td>
@@ -58,6 +60,8 @@
         <tr>
             <td><img style="height:60px; object-fit:fill;" src="/upload/{{= Picture}}" /></td>
             <td>{{= Id}}</td>
+            <td>{{= ParentCategory}}</td>
+            <td>{{= SubCategory}}</td>
             <td>{{= Name}}</td>
             <td>{{= Price}}</td>
             <td>{{= Summary}}</td>
@@ -77,14 +81,15 @@
                     type: "GetAllByPage",
                     pageIndex: 1,
                     pageSize: 999,
-                    ParentId: ParentId
+                    ParentId: ParentId,
+                    SubCategoryId:null
                 },
                 success: r
             });
         }
 
         getPC(-1, r => {
-            let p_Html = '<option value="0">无</option>';
+            let p_Html = '<option value="-1">无</option>';
             r.Data.list.forEach(pc => {
                 p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
                 $("#CategoryId").html(p_Html);
@@ -93,7 +98,7 @@
 
         $('#CategoryId').on('change', function () {
             getPC($(this).val(), r => {
-                let p_Html = '<option value="0">无</option>';
+                let p_Html = '<option value="-1">无</option>';
                 r.Data.list.forEach(pc => {
                     p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
                     $("#SubCategoryId").html(p_Html);
@@ -108,6 +113,8 @@
                 pageSize: 10,
             },
             getData() {
+                pageObj.option.CategoryId = $('#CategoryId').val()
+                pageObj.option.SubCategoryId = $('#SubCategoryId').val()
                 $.ajax({
                     url: '/Ajax/Product.ashx?type=GetAllByPage',
                     method: 'post',

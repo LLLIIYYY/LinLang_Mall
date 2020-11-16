@@ -176,7 +176,8 @@ namespace Manage_linlang.Ajax
             bool res = new ProductService().Update(new ProductEntity()
             {
                 Id = Id,
-            });
+                Deleted = true
+            }) ;
             return new JsonResult()
             {
                 Code = res ? 200: 400,

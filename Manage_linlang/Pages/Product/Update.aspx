@@ -95,6 +95,20 @@
                     success: r
                 });
             }
+            var init = true;
+            $('#CategoryId').on('change', function () {
+                getPC($(this).val(), r => {
+                    let p_Html = '<option value="0">无</option>';
+                    r.Data.list.forEach(pc => {
+                        p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
+                    });
+                    $("#SubCategoryId").html(p_Html);
+                    if (init) {
+                        $('#SubCategoryId').val(param["SubCategoryId"]);
+                        init = null;
+                    }
+                });
+            });
 
             getPC(-1, r => {
                 let p_Html = '<option value="0">无</option>';
@@ -106,18 +120,10 @@
                     let name = inp.getAttribute('Name');
                     if (!name.startsWith('_')) inp.setAttribute('value', param[name]);
                 });
-                $('#SubCategoryId').val(param["SubCategoryId"]);
+                $('#CategoryId').val(param["CategoryId"]);
+                $('#CategoryId')[0].dispatchEvent(new Event('change'))
             });
-
-            $('#CategoryId').on('change', function () {
-                getPC($(this).val(), r => {
-                    let p_Html = '<option value="0">无</option>';
-                    r.Data.list.forEach(pc => {
-                        p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
-                    });
-                    $("#SubCategoryId").html(p_Html);
-                });
-            });
+            
 
             let param = {};
             window.location.hash.substr(1).split('&').forEach(d => {
@@ -129,7 +135,8 @@
 
             $('#btn_signin').on('click', function () {
                 let data = new FormData(document.getElementById('data'));
-                data.append('type', 'Add');
+                data.append("Id", param['Id']);
+                data.append('type', 'Update');
                 $.ajax({
                     url: '/Ajax/Product.ashx',
                     method: 'post',

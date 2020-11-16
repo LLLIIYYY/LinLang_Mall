@@ -15,7 +15,8 @@
                 <label for="CategoryId" class="col-sm-2 control-label">一级类别</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="CategoryId" name="CategoryId">
-                        <option value="-1">无</option>
+                        <option>空</option>
+                        <option value="0">无</option>
                     </select>
                 </div>
             </div>
@@ -23,6 +24,7 @@
                 <label for="SubCategoryId" class="col-sm-2 control-label">二级类别</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="SubCategoryId" name="SubCategoryId">
+                        <option>空</option>
                         <option value="0">无</option>
                     </select>
                 </div>
@@ -65,7 +67,9 @@
         </form>
     </div>
     <script type="text/javascript" src="../../Content/validator.js"></script>
-    <script type="text/javascript">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="../../Content/layui.all.js" type="text/javascript"></script>
+    <script>
         $(function () {
             function getPC(ParentId, r) {
                 $.ajax({
@@ -102,23 +106,30 @@
                 {
                     name: "CategoryId",
                     display: '必须选择一个分类',
-                    rule: 'rquired'
+                    rules: 'required'
                 }, {
                     name: "SubCategoryId",
                     display: '必须选择一个分类',
-                    rule: 'rquired'
+                    rules: 'required'
                 }, {
                     name: "Name",
                     display: '商品名称必须填写, 并且长度必须再2-20',
-                    rule: 'rquired|min_length(2)|max_length(20)'
+                    rules: 'required|max_length(20)|min_length(2)'
                 }, {
                     name: "Price",
                     display: '单价必须填写 并且大于0',
-                    rule: 'rquired|is_money'
+                    rules: 'required|is_money'
                 },
             ], (obj, evt) => {
-                    console.log(obj);
-                    if (obj.errors) {
+                    if (obj.errors.length > 0) {
+                        obj.errors.forEach(e => {
+                            layer.tips(e.message, '#'+e.id, {
+                                tips: [1, 'red'],
+                                time: 3000,
+                                tipsMore: true,
+                                area: '500px'
+                            });
+                        })
                         return;
                     }
                     
