@@ -262,7 +262,6 @@
     <Content Include="Pages\Product\Update.aspx" />
     <Content Include="Pages\Employee\Update.aspx" />
     <Content Include="Pages\Employee\Add.aspx" />
-    <Content Include="Pages\Employee\Edit.aspx" />
     <Content Include="Pages\Employee\List.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -404,13 +403,6 @@
     </Compile>
     <Compile Include="Pages\Employee\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Employee\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Employee\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Employee\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

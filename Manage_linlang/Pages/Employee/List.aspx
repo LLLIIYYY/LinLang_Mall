@@ -92,7 +92,7 @@
                 })
             },
             update(data) {
-                window.location = "/Pages/Employee/Update#" + obj2UrlParam(data);
+                window.location = "/Pages/Employee/Update#" + util.obj2UrlParam(data);
             }
         }
         pageObj.getData();

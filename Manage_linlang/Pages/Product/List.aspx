@@ -56,6 +56,7 @@
     <script src="../../Content/Custon/jquery.pagination.js"></script>
     <link type="text/css" href="../../Content/Custon/pagination.css"  rel="stylesheet"/>
     <script src="../../Content/Custon/jquery.tmpl.js"></script>
+    <script src="../../Content/util.js"></script>
     <script type="text/x-jquery-tmpl" id="list_tmpl">
         <tr>
             <td><img style="height:60px; object-fit:fill;" src="/upload/{{= Picture}}" /></td>
@@ -141,7 +142,7 @@
                 })
             },
             update(data) {
-                window.location = "/Pages/Product/Update#" + obj2UrlParam(data);
+                window.location = "/Pages/Product/Update#" + util.obj2UrlParam(data);
             }
         }
         pageObj.getData();

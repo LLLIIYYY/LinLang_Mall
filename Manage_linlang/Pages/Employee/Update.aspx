@@ -45,12 +45,13 @@
             </div>
         </form>
     </div>
+    <script src="../../Content/util.js"></script>
     <script type="text/javascript">
         $(function () {
             let param = {};
             window.location.hash.substr(1).split('&').forEach(d => {
                 let s = d.split('=');
-                param[s[0]] = s[1];
+                param[s[0]] = decodeURIComponent(s[1]);
             });
 
             $('#Name').val(param['Name']);

@@ -81,6 +81,7 @@
             </div>
         </form>
     </div>
+    <script src="../../Content/util.js"></script>
     <script type="text/javascript">
         $(function () {
             function getPC(ParentId, r) {
@@ -104,6 +105,7 @@
                     });
                     $("#SubCategoryId").html(p_Html);
                     if (init) {
+                        
                         $('#SubCategoryId').val(param["SubCategoryId"]);
                         init = null;
                     }
@@ -118,7 +120,7 @@
                 $("#CategoryId").html(p_Html);
                 $('input').each((i, inp) => {
                     let name = inp.getAttribute('Name');
-                    if (!name.startsWith('_')) inp.setAttribute('value', param[name]);
+                    if (!name.startsWith('_')) inp.setAttribute('value', decodeURIComponent(param[name]));
                 });
                 $('#CategoryId').val(param["CategoryId"]);
                 $('#CategoryId')[0].dispatchEvent(new Event('change'))
@@ -145,7 +147,7 @@
                     processData: false,
                     data: data,//要发送到服务器的数据
                     success: function (reslut) {
-                        console.log(reslut);
+                        alert(reslut.Message)
                     }
                 });
             });

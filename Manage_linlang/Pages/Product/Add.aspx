@@ -143,7 +143,7 @@
                         processData: false,
                         data: data,//要发送到服务器的数据
                         success: function (reslut) {
-                            console.log(reslut);
+                            alert(reslut.Message);
                         }
                     });
             });

@@ -99,7 +99,7 @@
                 })
             },
             update(data) {
-                window.location = "/Pages/ProductCategory/Update#" + obj2UrlParam(data);
+                window.location = "/Pages/ProductCategory/Update#" + util.obj2UrlParam(data);
             }
         }
         pageObj.getData();
