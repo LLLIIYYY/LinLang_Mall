@@ -22,12 +22,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScript", "SqlScript", "{8F6A3D26-B535-40A3-A7E4-2331E45B9ABB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScript", "SqlScript", "{8EAABC63-9C11-405A-9D68-358462E54E4C}"
 	ProjectSection(SolutionItems) = preProject
-		..\proc_Employee.sql = ..\proc_Employee.sql
-		..\proc_Product.sql = ..\proc_Product.sql
-		..\proc_ProductCategory.sql = ..\proc_ProductCategory.sql
-		..\SQLQuery1.sql = ..\SQLQuery1.sql
+		SqlScript\proc_Employee.sql = SqlScript\proc_Employee.sql
+		SqlScript\proc_Product.sql = SqlScript\proc_Product.sql
+		SqlScript\proc_ProductCategory.sql = SqlScript\proc_ProductCategory.sql
+		SqlScript\SQLQuery1.sql = SqlScript\SQLQuery1.sql
 	EndProjectSection
 EndProject
 Global
