@@ -33,9 +33,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Picture" class="col-sm-2 control-label">商品名称</label>
+                <label for="Picture" class="col-sm-2 control-label">商品图片</label>
                 <div class="col-sm-10">
-                    <input type="file" class="form-control" id="Picture" name="Picture">
+                    <img src="#" id="Picture_img" alt="Alternate Text" style="width:200px;height:120px;cursor:pointer;" />
+                    <input type="file" style="display:none" class="form-control" id="Picture" name="Price" placeholder="单价" onchange="loadImg(this)">
                 </div>
             </div>
             <div class="form-group">
@@ -105,7 +106,6 @@
                     });
                     $("#SubCategoryId").html(p_Html);
                     if (init) {
-                        
                         $('#SubCategoryId').val(param["SubCategoryId"]);
                         init = null;
                     }
@@ -124,7 +124,19 @@
                 });
                 $('#CategoryId').val(param["CategoryId"]);
                 $('#CategoryId')[0].dispatchEvent(new Event('change'))
+                $("#Picture_img").attr('src', '/upload/'+param['Picture'])
             });
+            $("#Picture_img").click(function () {
+                $('#Picture').trigger('click');
+                //if (window.FileReader) {
+                //    var reader = new FileReader();
+                //    reader.readAsDataURL(file);
+                //    //监听文件读取结束后事件
+                //    reader.onloadend = function (e) {
+                //        $("#" + num).attr("src", e.target.result);    //e.target.result就是最后的路径地址
+                //    };
+                //}
+            }); 
             
 
             let param = {};
@@ -152,6 +164,9 @@
                 });
             });
         });
+        function loadImg(el) {
+            $('#Picture_img').attr('src', URL.createObjectURL(el.files[0]));
+        }
     </script>
 
 </asp:Content>

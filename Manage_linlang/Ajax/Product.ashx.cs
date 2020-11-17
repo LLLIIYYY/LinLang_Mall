@@ -60,31 +60,41 @@ namespace Manage_linlang.Ajax
             }
             
         }
-        public JsonResult Add(HttpContext context)
+        private string save_img(HttpContext context)
         {
-            string uploadName = "notPicture.jpg";
             try
             {
                 string upLoadDir = context.Server.MapPath("/upload");
+                string fileName = context.Request.Files[0].FileName;
+                string ext = fileName.Substring(fileName.LastIndexOf('.'));
+                if (File.Exists(context.Server.MapPath("\\upload\\"+fileName+ fileName))) return null;
+                string uploadName = "";
                 if (!Directory.Exists(upLoadDir)) Directory.CreateDirectory(upLoadDir);
                 if (context.Request.Files.Count > 0)
                 {
-                    string fileName = context.Request.Files[0].FileName;
-                    string ext = fileName.Substring(fileName.LastIndexOf('.'));
+
                     uploadName = Guid.NewGuid().ToString() + ext;
+                    HttpFileCollection files = context.Request.Files;
                     context.Request.Files[0].SaveAs(Path.Combine(upLoadDir, uploadName));
                 }
-                
+                return uploadName;
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                return new JsonResult{ 
-                    Code = 406,
-                    Message= "错误的文件上传",
-                    Data = ee
-                };
+                return null;
 
             }
+        }
+        public JsonResult Add(HttpContext context)
+        {
+            string uploadName = save_img(context);
+            if (uploadName!=null)
+                return new JsonResult
+                {
+                        Code = 406,
+                    Message = "错误的文件上传",
+                    Data = null
+                };
             bool success = new ProductService().Create(new ProductEntity() {
                 CategoryId = Convert.ToInt32(context.Request["CategoryId"]),
                 SubCategoryId  = Convert.ToInt32(context.Request["SubCategoryId"]),
@@ -138,6 +148,9 @@ namespace Manage_linlang.Ajax
                     Code = 400,
                     Message = "修改失败, ID无效!"
                 };
+            string uploadName = null;
+            if (context.Request.Files.Count > 0)
+                uploadName = save_img(context);
             
             bool res = new ProductService().Update(new ProductEntity() {
                 Id=Id,
@@ -145,7 +158,7 @@ namespace Manage_linlang.Ajax
                 SubCategoryId = Convert.ToInt32(context.Request["SubCategoryId"]),
                 Name = Convert.ToString(context.Request["Name"]),
                 Summary = Convert.ToString(context.Request["Summary"]),
-                Picture = Convert.ToString(context.Request["Picture"]),
+                Picture = uploadName,
                 Price = Convert.ToInt32(context.Request["Price"]),
                 OnSale = Convert.ToBoolean(context.Request["OnSale"]),
                 Description = Convert.ToString(context.Request["Description"]),
