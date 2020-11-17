@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Manage_linlang.Pages.Employee
+namespace Manage_linlang.Pages.Product
 {
 
 

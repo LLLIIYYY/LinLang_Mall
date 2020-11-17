@@ -7,11 +7,11 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Manage_linlang
+namespace Mall_linlang.Pages.Product
 {
 
 
-    public partial class SiteMaster
+    public partial class List
     {
     }
 }
