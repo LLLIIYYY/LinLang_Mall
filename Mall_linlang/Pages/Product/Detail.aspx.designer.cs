@@ -7,11 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-<<<<<<<< HEAD:Mall_linlang/Pages/Product/Detail.aspx.designer.cs
 namespace Mall_linlang.Pages.Product
-========
-namespace Manage_linlang.Pages.Product
->>>>>>>> b3173e4... 1:Manage_linlang/Pages/Product/Edit.aspx.designer.cs
 {
 
 

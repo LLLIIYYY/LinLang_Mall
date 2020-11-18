@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Mall_linlang.Pages.Product
 {
-    public partial class Detail : System.Web.UI.Page
+    public partial class Detail1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

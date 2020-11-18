@@ -230,7 +230,7 @@
                     dataType: 'json',
                     data: { ParentId: ParentId, pageIndex: 1, pageSize: 9999 },
                     success: function (res) {
-                        let c_html = '<input type="radio" name="' + name + '" value="' + (name == 'SubCategoryId' ? '-1' :'0')+'" checked="checked"/> 全部 ';
+                        let c_html = '<input type="radio" name="' + name + '" value="' + (name == 'SubCategoryId' ? '-1' :'-1')+'" checked="checked"/> 全部 ';
                         res.Data.list.forEach(c => {
                             c_html += '<input type="radio" name="' + name + '" value="' + c.Id + '" checked="checked"/> ' + c.Category + ' ';
                         });
@@ -249,8 +249,9 @@
             },
 			getData() {
                 let that = this;
-                pageObj.option.CategoryId = $('input[name=CategoryId]').val()
-                pageObj.option.SubCategoryId = $('input[name=SubCategoryId]').val()
+                pageObj.option.CategoryId = $('input[name=CategoryId]:checked').val()
+                pageObj.option.SubCategoryId = $('input[name=SubCategoryId]:checked').val()
+
                 $.ajax({
                     url: '/Ajax/Product.ashx?type=GetAllByPage',
                     method: 'post',

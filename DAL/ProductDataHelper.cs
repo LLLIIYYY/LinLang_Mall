@@ -126,7 +126,7 @@ namespace DAL
             cmd.Parameters.Add(new SqlParameter("@PageIndex", pageIndex));
             cmd.Parameters.Add(new SqlParameter("@PageSize", Convert.ToDecimal(pageSize)));
             cmd.Parameters.Add(new SqlParameter("@Name", Name));
-            if(SubCategoryId!=-1) cmd.Parameters.Add(new SqlParameter("@SubCategoryId", SubCategoryId));
+            if(SubCategoryId != -1) cmd.Parameters.Add(new SqlParameter("@SubCategoryId", SubCategoryId));
             if (CategoryId != -1) cmd.Parameters.Add(new SqlParameter("@CategoryId", CategoryId));
             if(Id != null) cmd.Parameters.Add(new SqlParameter("@Id", Id));
             cmd.ExecuteNonQuery();

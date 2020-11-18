@@ -1,6 +1,8 @@
 ﻿USE [Store]
 GO
 
+select pc.Category, p.* from product p left join ProductCategory pc on p.CategoryId=pc.Id;
+
 alter proc p_createProduct
 (
 	@CategoryId	int,	--类别ID
