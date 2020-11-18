@@ -88,7 +88,7 @@ namespace Manage_linlang.Ajax
         public JsonResult Add(HttpContext context)
         {
             string uploadName = save_img(context);
-            if (uploadName!=null)
+            if (uploadName==null)
                 return new JsonResult
                 {
                         Code = 406,

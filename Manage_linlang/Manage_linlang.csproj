@@ -253,11 +253,9 @@
     <Content Include="Content\font\iconfont.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\ProductCategory\Add.aspx" />
-    <Content Include="Pages\ProductCategory\Edit.aspx" />
     <Content Include="Pages\ProductCategory\List.aspx" />
     <Content Include="Pages\ProductCategory\Update.aspx" />
     <Content Include="Pages\Product\Add.aspx" />
-    <Content Include="Pages\Product\Edit.aspx" />
     <Content Include="Pages\Product\List.aspx" />
     <Content Include="Pages\Product\Update.aspx" />
     <Content Include="Pages\Employee\Update.aspx" />
@@ -341,13 +339,6 @@
     <Compile Include="Pages\ProductCategory\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProductCategory\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\ProductCategory\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ProductCategory\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -368,13 +359,6 @@
     </Compile>
     <Compile Include="Pages\Product\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Product\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Product\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Product\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

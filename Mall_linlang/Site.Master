@@ -153,7 +153,7 @@
 				<div class="Navigation" id="Navigation">
 					<ul class="Navigation_name">
 						<li><a href="Index.html">首页</a></li>
-						<li class="on"><a href="Pages/Product/List.aspx">产品列表</a></li>
+						<li class="on"><a href="product_list.html">产品列表</a></li>
 					</ul>
 				</div>
 				<script>$("#Navigation").slide({ titCell: ".Navigation_name li" });</script>

@@ -88,8 +88,8 @@
                 let p_Html = '<option value="0">无</option>';
                 r.Data.list.forEach(pc => {
                     p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
-                    $("#CategoryId").html(p_Html);
                 });
+                $("#CategoryId").html(p_Html);
             });
 
             $('#CategoryId').on('change', function () {
@@ -97,8 +97,8 @@
                     let p_Html = '<option value="0">无</option>';
                     r.Data.list.forEach(pc => {
                         p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
-                        $("#SubCategoryId").html(p_Html);
                     });
+                    $("#SubCategoryId").html(p_Html);
                 });
             });
 
