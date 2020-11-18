@@ -1,6 +1,6 @@
 ﻿USE [Store]
 GO
-
+select * from productCategory
 select pc.Category, p.* from product p left join ProductCategory pc on p.CategoryId=pc.Id;
 
 alter proc p_createProduct
@@ -76,8 +76,8 @@ begin
 				select * from Product
 					where Deleted=0 
 					and Name like '%'+ISNULL(@Name,'')+'%' 
-					and CategoryId = ISNULL(@CategoryId, CategoryId) 
-					and SubCategoryId = ISNULL(@SubCategoryId, SubCategoryId) 
+					and CategoryId = ISNULL(@CategoryId, CategoryId)
+					and SubCategoryId = ISNULL(@SubCategoryId, SubCategoryId)
 					order by Id offset (@PageIndex-1)*cast(@PageSize as int) rows 
 					fetch next cast(@PageSize as int) rows only
 			)p

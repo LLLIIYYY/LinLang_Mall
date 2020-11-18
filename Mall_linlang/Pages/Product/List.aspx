@@ -215,7 +215,7 @@
     </script>
 	<script type="text/javascript">
         renderCategory($('.CategoryId_box'), 'CategoryId', 0);
-        let CategoryId_box = $('CategoryId_box');
+        let CategoryId_box = $('.SubCategoryId_box');
         $(".CategoryId_box").on('change', 'input[type=radio]', function (e) {
             renderCategory(CategoryId_box, 'SubCategoryId', e.target.value);
             pageObj.getData();
@@ -230,9 +230,9 @@
                     dataType: 'json',
                     data: { ParentId: ParentId, pageIndex: 1, pageSize: 9999 },
                     success: function (res) {
-                        let c_html = '<input type="radio" name="' + name + '" value="' + (name == 'SubCategoryId' ? '-1' :'-1')+'" checked="checked"/> 全部 ';
+                        let c_html = '<input type="radio" name="' + name + '" value="' + (name == 'SubCategoryId' ? '0' :'-1')+'" checked="checked"/> 全部 ';
                         res.Data.list.forEach(c => {
-                            c_html += '<input type="radio" name="' + name + '" value="' + c.Id + '" checked="checked"/> ' + c.Category + ' ';
+                            c_html += '<input type="radio" name="' + name + '" value="' + c.Id + '" /> ' + c.Category + ' ';
                         });
                         el.html(c_html);
                     }
