@@ -131,7 +131,7 @@
 								<li class="recommend_info">
 									<div class="img_link">
 										<a href="Product_Detail.html" class=""><img src="Content/images/p_8.jpg" width="110px"
-												height="150px"></a>
+												height="150px"/></a>
 									</div>
 									<div class="content">
 										<a href="Product_Detail.html" class="title_name">荣耀 6 Plus (PE-TL10) 3GB内存增强版 金色
@@ -143,7 +143,7 @@
 								<li class="recommend_info">
 									<div class="img_link">
 										<a href="Product_Detail.html" class=""><img src="Content/images/p_8.jpg" width="110px"
-												height="150px"></a>
+												height="150px"/></a>
 									</div>
 									<div class="content">
 										<a href="Product_Detail.html" class="title_name">荣耀 6 Plus (PE-TL10) 3GB内存增强版 金色
@@ -155,7 +155,7 @@
 								<li class="recommend_info">
 									<div class="img_link">
 										<a href="Product_Detail.html" class=""><img src="Content/images/p_8.jpg" width="110px"
-												height="150px"></a>
+												height="150px"/></a>
 									</div>
 									<div class="content">
 										<a href="Product_Detail.html" class="title_name">荣耀 6 Plus (PE-TL10) 3GB内存增强版 金色
@@ -167,7 +167,7 @@
 								<li class="recommend_info">
 									<div class="img_link">
 										<a href="Product_Detail.html" class=""><img src="Content/images/p_8.jpg" width="110px"
-												height="150px"></a>
+												height="150px"/></a>
 									</div>
 									<div class="content">
 										<a href="Product_Detail.html" class="title_name">有货潮牌Life After
@@ -179,7 +179,7 @@
 								<li class="recommend_info">
 									<div class="img_link">
 										<a href="Product_Detail.html" class=""><img src="Content/images/p_8.jpg" width="110px"
-												height="150px"></a>
+												height="150px"/></a>
 									</div>
 									<div class="content">
 										<a href="Product_Detail.html" class="title_name">有货潮牌Life After
@@ -191,7 +191,7 @@
 								<li class="recommend_info">
 									<div class="img_link">
 										<a href="Product_Detail.html" class=""><img src="Content/images/p_8.jpg" width="110px"
-												height="150px"></a>
+												height="150px"/></a>
 									</div>
 									<div class="content">
 										<a href="Product_Detail.html" class="title_name">SK-II 肌底晶透护肤礼盒（神仙水 补水保湿 精华液 乳液

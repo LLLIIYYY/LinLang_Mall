@@ -1,5 +1,6 @@
 ﻿USE [Store]
 GO
+select * from Product
 
 alter proc p_createProductCategory
 (
@@ -55,13 +56,15 @@ begin
 			order by Id 
 			offset (@PageIndex-1)*cast(@PageSize as int) rows 
 			fetch next cast(@PageSize as int) rows only
+			select @PageCount = CEILING(count(Id)/@PageSize) from ProductCategory where Deleted=0
+				and ParentId = ISNULL(@ParentId, ParentId)
+				and Category like '%'+@Category+'%'
 		end
 	else
 		begin
 			select * from ProductCategory where Id = @Id
+			select @PageCount = CEILING(count(Id)/@PageSize) from ProductCategory where Id = @Id;
 		end
-select @PageCount = CEILING(count(Id)/@PageSize) from Employee;
-select @PageCount
 end
 go
 

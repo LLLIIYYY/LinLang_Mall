@@ -113,6 +113,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\common.css" />
     <Content Include="Content\css\Orders.css" />
+    <Content Include="Content\css\pagination.css" />
     <Content Include="Content\css\purebox-facebook.css" />
     <Content Include="Content\css\purebox-metro.css" />
     <Content Include="Content\css\show.css" />
@@ -334,12 +335,14 @@
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\jquery.jumpto.js" />
     <Content Include="Content\js\jquery.min.1.8.2.js" />
+    <Content Include="Content\js\jquery.pagination.js" />
     <Content Include="Content\js\jquery.purebox.js" />
     <Content Include="Content\js\jquery.resizable.js" />
     <Content Include="Content\js\jquery.reveal.js" />
     <Content Include="Content\js\jquery.sumoselect.js" />
     <Content Include="Content\js\jquery.sumoselect.min.js" />
     <Content Include="Content\js\jquery.SuperSlide.2.1.1.js" />
+    <Content Include="Content\js\jquery.tmpl.js" />
     <Content Include="Content\js\jqzoom.js" />
     <Content Include="Content\js\layer\layer.js" />
     <Content Include="Content\js\layer\mobile\layer.js" />
@@ -372,6 +375,9 @@
     <Content Include="Content\fonts\iconfont.woff" />
     <Content Include="AJAX\User.ashx" />
     <Content Include="AJAX\Captcha.ashx" />
+    <Content Include="AJAX\ProductCategory.ashx" />
+    <Content Include="AJAX\Product.ashx" />
+    <Content Include="AJAX\Employee.ashx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Product\Detail.aspx" />
@@ -413,6 +419,16 @@
   <ItemGroup>
     <Compile Include="AJAX\Captcha.ashx.cs">
       <DependentUpon>Captcha.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\Dictionary.cs" />
+    <Compile Include="AJAX\Employee.ashx.cs">
+      <DependentUpon>Employee.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\Product.ashx.cs">
+      <DependentUpon>Product.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\ProductCategory.ashx.cs">
+      <DependentUpon>ProductCategory.ashx</DependentUpon>
     </Compile>
     <Compile Include="AJAX\User.ashx.cs">
       <DependentUpon>User.ashx</DependentUpon>

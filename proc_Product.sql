@@ -55,7 +55,6 @@ INSERT INTO [dbo].[Product]
 end
 GO
 
-
 alter proc pc_Product
 (
 	@PageIndex int = 1,
@@ -68,7 +67,29 @@ alter proc pc_Product
 )
 as
 begin
-	if @Id = null
+	if @Id is null
+		begin
+			select pc1.Category ParentCategory, pc2.Category SubCategory, p.* 
+			from (
+				select * from Product
+					where Deleted=0 
+					and Name like '%'+ISNULL(@Name,'')+'%' 
+					and CategoryId = ISNULL(@CategoryId, CategoryId) 
+					and SubCategoryId = ISNULL(@SubCategoryId, SubCategoryId) 
+					order by Id offset (@PageIndex-1)*cast(@PageSize as int) rows 
+					fetch next cast(@PageSize as int) rows only
+			)p
+			left join ProductCategory pc1 
+			on p.CategoryId = pc1.Id 
+			left join ProductCategory pc2 
+			on p.SubCategoryId = pc2.Id
+			select @PageCount = CEILING(count(Id)/@PageSize) from Product
+					where Deleted=0 
+					and Name like '%'+ISNULL(@Name,'')+'%' 
+					and CategoryId = ISNULL(@CategoryId, CategoryId) 
+					and SubCategoryId = ISNULL(@SubCategoryId, SubCategoryId);
+		end
+	else
 		begin
 			select pc1.Category ParentCategory, pc2.Category SubCategory, p.* 
 			from (
@@ -80,25 +101,8 @@ begin
 			on p.CategoryId = pc1.Id 
 			left join ProductCategory pc2 
 			on p.SubCategoryId = pc2.Id
+			select @PageCount = count(id) from Product where Id = @Id;
 		end
-	else
-		begin
-			select pc1.Category ParentCategory, pc2.Category SubCategory, p.* 
-			from (
-				select * from Product
-					where Deleted=0 
-					and Name like '%'+@Name+'%' 
-					and CategoryId = ISNULL(@CategoryId, CategoryId) 
-					and SubCategoryId = ISNULL(@SubCategoryId, SubCategoryId) 
-					order by Id offset (@PageIndex-1)*cast(@PageSize as int) rows 
-					fetch next cast(@PageSize as int) rows only
-			)p
-			left join ProductCategory pc1 
-			on p.CategoryId = pc1.Id 
-			left join ProductCategory pc2 
-			on p.SubCategoryId = pc2.Id
-		end
-select @PageCount = CEILING(count(Id)/@PageSize) from Product;
 end
 go
 
@@ -141,9 +145,3 @@ begin
 	set @success = 1
 end
 GO
-
-
-
-
-
-select * from product

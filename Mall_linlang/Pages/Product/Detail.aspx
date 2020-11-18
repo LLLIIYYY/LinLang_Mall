@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Detail.aspx.cs" Inherits="Mall_linlang.Pages.Product.Detail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!--产品详细页样式-->
+	<link href="/Content/css/Orders.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/css/show.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/css/purebox-metro.css" rel="stylesheet" id="skin">
+	<script src="/Content/js/jqzoom.js" type="text/javascript"></script>
+	<script src="/Content/js/validator.js"></script>
+
+	<!--产品详细页样式-->
 	<div class="clearfix Inside_pages">
 		<div class="Location_link">
 			<em></em><a href="#">进口食品、进口牛</a> &lt; <a href="#">进口饼干/糕点</a> &lt; <a href="#">销售产品名称</a>
@@ -206,7 +212,7 @@
 									只有购买过该商品的用户才能进行评价。</dt>
 								<dd>
 									<input type="submit" class="Publication_btn" title="" onclick="send_cooment()"
-										value="发表评论">
+                                        value="发表评论">
 								</dd>
 							</dl>
 						</div>
@@ -1482,82 +1488,115 @@
 							</div>
 						</div>
 						<script type="text/javascript">
-							//<![CDATA[
-							var cmt_empty_username = "请输入您的用户名称";
-							var cmt_empty_email = "请输入您的电子邮件地址";
-							var cmt_error_email = "电子邮件地址格式不正确";
-							var cmt_empty_content = "您没有输入评论的内容";
-							var captcha_not_null = "验证码不能为空!";
-							var cmt_invalid_comments = "无效的评论内容!";
+                            //<![CDATA[
+                            var cmt_empty_username = "请输入您的用户名称";
+                            var cmt_empty_email = "请输入您的电子邮件地址";
+                            var cmt_error_email = "电子邮件地址格式不正确";
+                            var cmt_empty_content = "您没有输入评论的内容";
+                            var captcha_not_null = "验证码不能为空!";
+                            var cmt_invalid_comments = "无效的评论内容!";
 
 							/**
 							 * 提交评论信息
 							*/
-							function submitComment(frm) {
-								var cmt = new Object;
-								cmt.email = frm.elements['email'].value;
-								cmt.content = frm.elements['content'].value;
-								cmt.type = frm.elements['cmt_type'].value;
-								cmt.id = frm.elements['id'].value;
-								cmt.enabled_captcha = frm.elements['enabled_captcha'] ? frm.elements['enabled_captcha'].value : '0';
-								cmt.captcha = frm.elements['captcha'] ? frm.elements['captcha'].value : '';
-								cmt.rank = frm.elements['rank'].value;
-								if (cmt.email.length > 0) {
-									if (!(Utils.isEmail(cmt.email))) {
-										alert(cmt_error_email);
-										return false;
-									}
-								}
-								else {
-									alert(cmt_empty_email);
-									return false;
-								}
+                            function submitComment(frm) {
+                                var cmt = new Object;
+                                cmt.email = frm.elements['email'].value;
+                                cmt.content = frm.elements['content'].value;
+                                cmt.type = frm.elements['cmt_type'].value;
+                                cmt.id = frm.elements['id'].value;
+                                cmt.enabled_captcha = frm.elements['enabled_captcha'] ? frm.elements['enabled_captcha'].value : '0';
+                                cmt.captcha = frm.elements['captcha'] ? frm.elements['captcha'].value : '';
+                                cmt.rank = frm.elements['rank'].value;
+                                if (cmt.email.length > 0) {
+                                    if (!(Utils.isEmail(cmt.email))) {
+                                        alert(cmt_error_email);
+                                        return false;
+                                    }
+                                }
+                                else {
+                                    alert(cmt_empty_email);
+                                    return false;
+                                }
 
-								if (cmt.content.length == 0) {
-									alert(cmt_empty_content);
-									return false;
-								}
+                                if (cmt.content.length == 0) {
+                                    alert(cmt_empty_content);
+                                    return false;
+                                }
 
-								if (cmt.enabled_captcha > 0 && cmt.captcha.length == 0) {
-									alert(captcha_not_null);
-									return false;
-								}
+                                if (cmt.enabled_captcha > 0 && cmt.captcha.length == 0) {
+                                    alert(captcha_not_null);
+                                    return false;
+                                }
 
-								Ajax.call('comment.php', 'cmt=' + cmt.toJSONString(), commentResponse, 'POST', 'JSON');
-								frm.elements['content'].value = '';
-								return false;
-							}
+                                Ajax.call('comment.php', 'cmt=' + cmt.toJSONString(), commentResponse, 'POST', 'JSON');
+                                frm.elements['content'].value = '';
+                                return false;
+                            }
 
 							/**
 							 * 处理提交评论的反馈信息
 							*/
-							function commentResponse(result) {
-								if (result.message) {
-									alert(result.message);
-								}
+                            function commentResponse(result) {
+                                if (result.message) {
+                                    alert(result.message);
+                                }
 
-								if (result.error == 0) {
-									var layer = document.getElementById('ECS_COMMENT');
+                                if (result.error == 0) {
+                                    var layer = document.getElementById('ECS_COMMENT');
 
-									if (layer) {
-										layer.innerHTML = result.content;
-									}
-								}
-							}
+                                    if (layer) {
+                                        layer.innerHTML = result.content;
+                                    }
+                                }
+                            }
 
 //]]>
-						</script>
+                        </script>
 					</div>
 					<script type="text/javascript">
-						$('.CommentTab ul').find('li').click(function () {
-							$('.CommentTab ul').find('li').removeClass('active');
-							$('.CommentText').css({ display: 'none' });
-							$(this).addClass('active');
-							$('.CommentText').eq($(this).index()).css({ display: 'block' });
-						});
+                        $('.CommentTab ul').find('li').click(function () {
+                            $('.CommentTab ul').find('li').removeClass('active');
+                            $('.CommentText').css({ display: 'none' });
+                            $(this).addClass('active');
+                            $('.CommentText').eq($(this).index()).css({ display: 'block' });
+                        });
                     </script>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+<script language="javascript">
+    function updatenum(type) {
+        var qty = parseInt(document.forms['ECS_FORMBUY'].elements['number'].value);
+        if (type == 'del') {
+            if (qty > 1) {
+                document.forms['ECS_FORMBUY'].elements['number'].value = (qty - 1);
+            }
+        } else {
+            document.forms['ECS_FORMBUY'].elements['number'].value = (qty + 1);
+        }
+        //changePrice();
+    }
+    function dorank(rank_id) {
+        var rank_id;
+        $("#rank").val(rank_id);
+    }
+    function send_cooment() {
+        $(".commentBox").toggle();
+    }
+    function checkLength(which) {
+        var maxChars = 1000; //
+        if (which.value.length > maxChars) {
+            alert("您出入的字数超多限制!");
+            which.value = which.value.substring(0, maxChars);
+            return false;
+        } else {
+            var curr = maxChars - which.value.length; //250 减去 当前输入的
+            document.getElementById("sy").innerHTML = curr.toString();
+            return true;
+        }
+    }
+</script>
 </asp:Content>

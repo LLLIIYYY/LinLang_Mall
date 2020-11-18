@@ -126,23 +126,6 @@
                         renderPager(res.Data.pageCount, pageObj.option.pageIndex);
                     }
                 })
-            },
-            remove(data) {
-                console.log(data)
-                if (confirm("你确认删除吗?"))
-                    $.ajax({
-                        url: '/Ajax/Product.ashx?type=Delete',
-                        method: 'post',
-                        dataType: 'json',
-                        data: data,
-                        success: function (res) {
-                            alert(res.Message);
-                            window.location.reload();
-                    }
-                })
-            },
-            update(data) {
-                window.location = "/Pages/Product/Update#" + util.obj2UrlParam(data);
             }
         }
         pageObj.getData();
@@ -165,11 +148,5 @@
                 }
             })
         }
-        $("tbody").on("click", ".btn-delete", function(){
-            pageObj.remove($.tmplItem(this).data);
-        });
-        $("tbody").on("click", ".btn-update", function () {
-            pageObj.update($.tmplItem(this).data);
-        });
     </script>
 </asp:Content>

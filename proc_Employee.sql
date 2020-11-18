@@ -54,12 +54,14 @@ begin
 	if @Gender>0
 		begin
 			select * from Employee where Disabled=0 and Name like '%'+@Name+'%' and Gender=@Gender order by Id offset (@PageIndex-1)*cast(@PageSize as int) rows fetch next cast(@PageSize as int) rows only
+			select @PageCount = CEILING(count(Id)/@PageSize) from Employee where Disabled=0 and Name like '%'+@Name+'%' and Gender=@Gender;
+
 		end
 	else
 		begin
 			select * from Employee where Disabled=0 and Name like '%'+@Name+'%' order by Id offset (@PageIndex-1)*cast(@PageSize as int) rows fetch next cast(@PageSize as int) rows only
+			select @PageCount = CEILING(count(Id)/@PageSize) from Employee where Disabled=0 and Name like '%'+@Name+'%';
 		end
-select @PageCount = CEILING(count(Id)/@PageSize) from Employee;
 end
 go
 
