@@ -1,4 +1,4 @@
-﻿namespace Manage_linlang.Ajax
+﻿namespace Mall_linlang.Ajax
 {
     internal class Dictionary
     {

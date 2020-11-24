@@ -64,8 +64,9 @@ namespace Manage_linlang.Ajax
         {
             try
             {
-                string upLoadDir = context.Server.MapPath("/upload");
+                string upLoadDir = context.Server.MapPath("../upload");
                 string fileName = context.Request.Files[0].FileName;
+                //context.Server.MapPath("..").Substring(0, context.Server.MapPath("..").LastIndexOf('\\'));
                 string ext = fileName.Substring(fileName.LastIndexOf('.'));
                 if (File.Exists(context.Server.MapPath("\\upload\\"+fileName+ fileName))) return null;
                 string uploadName = "";

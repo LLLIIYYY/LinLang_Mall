@@ -63,54 +63,54 @@
 </body>
 <script type="text/javascript">
 	$(function () {
-        $('#btn_denglu').on('click', function () {
-			var userName = $('#user_text').val();
-			var pwd = $('#tbPassword').val();
-
-			var postData = {
-				loginId: userName,
-				loginPWD: pwd,
-				type:'Login',
-			}
-
-			//$('#myform').submit();
-			$.ajax({
-				url: '/AJAX/User.ashx',
-				method: 'post',
-				dataType: 'json',
-				data: postData,
-				success: function (reslut) {
-					console.log(reslut);
-					if (reslut.Code == 0) {
-						window.location.href = "/Default.aspx";
-                    }
-				}
-			});
+		$('#btn_denglu').on('click', function () {
+            validator.validate();
 		});
+        var validator = new Validator('myform', [
+            {
+                name: "username",
+                display: "必填字段不能为空|字数小于5个字符|大于15个字符",
+                rules: 'required|min_length(5)|max_length(15)'
+            }, {
+                name: "userpwd",
+                display: "必填字段不能为空|字数小于5个字符|大于15个字符",
+                rules: 'required|min_length(5)|max_length(15)'
+            }
+        ],
+            function (obj, evt) {
+                if (obj.errors.length>0) {
+                    var errorobj = obj.errors[0];
+                    layer.tips(errorobj.message, '#' + errorobj.id, {
+                        tips: [2, '#ff6600'],
+                        time: 4000
+					})
+					return;
+				}
+                var userName = $('#user_text').val();
+                var pwd = $('#tbPassword').val();
+
+                var postData = {
+                    loginId: userName,
+                    loginPWD: pwd,
+                    type: 'Login',
+                }
+
+                //$('#myform').submit();
+                $.ajax({
+                    url: '/AJAX/User.ashx',
+                    method: 'post',
+                    dataType: 'json',
+                    data: postData,
+                    success: function (result) {
+                        if (result.Code == 200) {
+                            window.location.href = "/Pages/Product/list.aspx";
+                        } else {
+                            alert(result.Message);
+                        }
+                    }
+                });
+            })
 	});
-	function validate() {
-		var validator = new Validator('myform', [
-			{
-				name: "username",
-				display: "必填字段不能为空|字数小于5个字符|大于15个字符",
-				rules: 'required|min_length(5)|max_length(15)'
-			}, {
-				name: "userpwd",
-				display: "必填字段不能为空|字数小于5个字符|大于15个字符",
-				rules: 'required|min_length(5)|max_length(15)'
-			}
-		],
-		function (obj, evt) {
-			if (obj.errors.length) {
-				var errorobj = obj.errors[0];
-				layer.tips(errorobj.message, '#' + errorobj.id, {
-					tips: [2, '#ff6600'],
-					time: 4000
-				})
-			}
-		})
-		$('#myform').submit()
-	}
 </script>
 
 </html>

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessModel\Pageination.cs" />
     <Compile Include="Extension\Convertor.cs" />
     <Compile Include="Extension\GenderEmnuConvertor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

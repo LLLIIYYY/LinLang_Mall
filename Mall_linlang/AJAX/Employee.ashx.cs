@@ -8,7 +8,7 @@ using BLL;
 using Model.Entity;
 using System.Web.SessionState;
 
-namespace Manage_linlang.Ajax
+namespace Mall_linlang.Ajax
 {
     /// <summary>
     /// Employee 的摘要说明

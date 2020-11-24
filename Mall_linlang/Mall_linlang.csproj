@@ -378,11 +378,17 @@
     <Content Include="AJAX\ProductCategory.ashx" />
     <Content Include="AJAX\Product.ashx" />
     <Content Include="AJAX\Employee.ashx" />
+    <Content Include="Cart.Master" />
+    <Content Include="AJAX\Auth_Ajax.ashx" />
+    <Content Include="AJAX\Cart_Ajax.ashx" />
+    <Content Include="AJAX\verification_code.ashx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Pages\Cart\List.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Product\Detail.aspx" />
     <Content Include="Pages\Product\List.aspx" />
     <Content Include="Pages\Register.aspx" />
+    <Content Include="Pages\User\Cart.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -417,8 +423,14 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AJAX\Auth_Ajax.ashx.cs">
+      <DependentUpon>Auth_Ajax.ashx</DependentUpon>
+    </Compile>
     <Compile Include="AJAX\Captcha.ashx.cs">
       <DependentUpon>Captcha.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\Cart_Ajax.ashx.cs">
+      <DependentUpon>Cart_Ajax.ashx</DependentUpon>
     </Compile>
     <Compile Include="AJAX\Dictionary.cs" />
     <Compile Include="AJAX\Employee.ashx.cs">
@@ -433,8 +445,18 @@
     <Compile Include="AJAX\User.ashx.cs">
       <DependentUpon>User.ashx</DependentUpon>
     </Compile>
+    <Compile Include="AJAX\verification_code.ashx.cs">
+      <DependentUpon>verification_code.ashx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Cart.Master.cs">
+      <DependentUpon>Cart.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.Master.designer.cs">
+      <DependentUpon>Cart.Master</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -444,6 +466,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Cart\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Cart\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -472,6 +501,13 @@
     </Compile>
     <Compile Include="Pages\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

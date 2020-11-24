@@ -55,6 +55,7 @@
     <Compile Include="Entity\OrderEntity.cs" />
     <Compile Include="Entity\ProductCategoryEntity.cs" />
     <Compile Include="Entity\ProductEntity.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="Entity\WalletBillingEntity.cs" />
     <Compile Include="Enums\GenderEnum.cs" />

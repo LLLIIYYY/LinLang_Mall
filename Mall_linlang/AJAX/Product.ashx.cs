@@ -9,7 +9,7 @@ using Model.Entity;
 using System.Web.SessionState;
 using System.IO;
 
-namespace Manage_linlang.Ajax
+namespace Mall_linlang.Ajax
 {
     /// <summary>
     /// Product 的摘要说明
@@ -28,6 +28,9 @@ namespace Manage_linlang.Ajax
                 {
                     case "Add":
                         json = Add(context);
+                        break;
+                    case "GetById":
+                        json = GetById(context);
                         break;
                     case "GetAllByPage":
                         json = GetAllByPage(context);
@@ -50,7 +53,7 @@ namespace Manage_linlang.Ajax
                 //响应请求
                 context.Response.Write(jsonStr);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 context.Response.Write(Newtonsoft.Json.JsonConvert.SerializeObject(new JsonResult
                 {
@@ -58,7 +61,17 @@ namespace Manage_linlang.Ajax
                     Message = "错误的请求, 错误信息:" + e.Message
                 }));
             }
-            
+        }
+
+        public JsonResult GetById(HttpContext context)
+        {
+
+            List<Product> lists = ((List<Product>)new ProductService().GetAllByPage(1, 1, "", null, null, Convert.ToInt32(context.Request["Id"]))["lists"]);
+            return new JsonResult() {
+                Code = 200,
+                Data = lists.Count>0?lists[0]:null,
+                Message = "获取成功"
+            };
         }
         private string save_img(HttpContext context)
         {

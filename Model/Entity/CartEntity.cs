@@ -32,5 +32,12 @@ namespace Model.Entity
         /// 修改时间
         /// </summary>
         public DateTime? ModifiedTime { get; set; }
+
+        public string ProName { get; set; }
+
+        public decimal Price { get; set; }
+
+
+        public string Picture { get; set; }
     }
 }

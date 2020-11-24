@@ -25,13 +25,13 @@
 				<div class="Collection">下午好，欢迎光临琳琅商城！</div>
 				<div class="hd_top_manu clearfix">
 					<ul class="clearfix">
-						<li class="hd_menu_tit zhuce" data-addclass="hd_menu_hover">欢迎光临本店！<a href="login.html"
-								class="red">[请登录]</a> 新用户<a href="register.html" class="red">[免费注册]</a></li>
+						<li class="hd_menu_tit zhuce" data-addclass="hd_menu_hover">欢迎光临本店！<a href="/Pages/Login"
+								class="red">[请登录]</a> 新用户<a href="/Pages/Register" class="red">[免费注册]</a></li>
 						<li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="User_Orderform.html">我的订单</a></li> <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="User.html">个人中心</a>
 						</li> <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="User.html">个人中心</a>
 						</li>
 						<li style="background: 0" class="hd_menu_tit" data-addclass="hd_menu_hover"> <a
-								href="Shop_cart.html">购物车</a> </li>
+								href="/Pages/Cart/List">购物车</a> </li>
 					</ul>
 				</div>
 			</div>

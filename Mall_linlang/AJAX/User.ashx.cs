@@ -56,10 +56,10 @@ namespace Mall_linlang.AJAX
             JsonResult json = null;
             if (user != null)
             {
-                context.Session["LoginInfo"] = LoginId;
+                context.Session["LoginInfo"] = user.Id;
                 json = new JsonResult
                 {
-                    Code = 0,
+                    Code = 200,
                     Message = "登陆成功",
                 };
             }
@@ -68,7 +68,7 @@ namespace Mall_linlang.AJAX
                 json = new JsonResult
                 {
                     Code = 0,
-                    Message = "登录失败",
+                    Message = "登录失败, 用户名或密码错误",
                 };
             }
             return json;

@@ -200,7 +200,7 @@
 			<li class="gl-item">
 				<em class="icon_special tejia"></em>
 				<div class="Borders">
-					<div class="img"><a href="Detail.aspx"><img src="/upload/{{= Picture}}"
+					<div class="img"><a href="Detail.aspx?id={{= Id}}"><img src="/upload/{{= Picture}}"
 								style="width:220px;height:220px"></a></div>
 					<div class="Price"><b>¥{{= Price}}</b><span>[¥49.01/500g]</span></div>
 					<div class="name"><a href="Detail.aspx">{{= Name}} {{= Description}}</a></div>

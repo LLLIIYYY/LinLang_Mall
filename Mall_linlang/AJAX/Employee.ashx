@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="Employee.ashx.cs" Class="Manage_linlang.Ajax.Employee" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="Employee.ashx.cs" Class="Mall_linlang.Ajax.Employee" %>

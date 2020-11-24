@@ -20,6 +20,12 @@ namespace BLL
             return success;
         }
         
+        public ProductEntity getSingle(int id)
+        {
+            List<ProductEntity> list = (List<ProductEntity>) GetAllByPage(1, 10, "", null, null, id)["list"];
+            if (list.Count > 0) return list[0];
+            return null;
+        }
 
         public Dictionary<String, Object> GetAllByPage(int pageIndex, int pageSIze, string Name, int? CategoryId, int? SubCategoryId, int? Id)
         {
