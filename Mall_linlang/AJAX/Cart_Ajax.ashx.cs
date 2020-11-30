@@ -30,11 +30,11 @@ namespace Mall_linlang.AJAX
                     case "ADD":
                         json = AddToCart(context);
                         break;
-                    case "":
-                     
+                    case "getAllByPage":
+                        json = GetAllByPage(context);
                         break;
                     default:
-                      new JsonResult
+                        json = new JsonResult
                         {
                             Code = 10101010,
                             Message = "参数错误"
@@ -92,7 +92,30 @@ namespace Mall_linlang.AJAX
 
         }
 
+        private JsonResult GetAllByPage(HttpContext context)
+        {
 
-    
+
+            CartService service = new CartService();
+            var list = service.Select(new CartEntity
+            {
+                UserId = AuthUser.Id,
+
+            }, new Pageination
+            {
+                PageIndex = 1,
+                PageSize = 10
+            });
+            return new JsonResult
+            {
+                Code = 0,
+                Message = "查询成功",
+                Data = list
+            };
+
+        }
+
+
+
     }
 }

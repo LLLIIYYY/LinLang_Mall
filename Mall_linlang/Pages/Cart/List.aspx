@@ -184,7 +184,7 @@
                     getData: function () {
                         $.get('/AJAX/Cart_Ajax.ashx',
                            {
-                               type: 'get'
+                               type: 'getAllByPage'
 
                            },
                            function (result) {

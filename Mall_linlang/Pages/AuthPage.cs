@@ -14,7 +14,7 @@ namespace Mall_linlang
         protected override void OnPreLoad(EventArgs e)
         {
             base.OnPreLoad(e);
-
+            
             if (Session["loginInfo"] != null &&
             !string.IsNullOrEmpty(Session["loginInfo"].ToString()))
             {
@@ -23,7 +23,7 @@ namespace Mall_linlang
             }
             else
             {
-                Response.Redirect("/Pages/Login");
+                Response.Redirect("/Pages/Login?preUrl="+Request.RawUrl);
 
             }
         }

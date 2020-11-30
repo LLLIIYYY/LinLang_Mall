@@ -102,8 +102,17 @@
                     dataType: 'json',
                     data: postData,
                     success: function (result) {
-                        if (result.Code == 200) {
-                            window.location.href = "/Pages/Product/list.aspx";
+						if (result.Code == 200) {
+							let p = true;
+                                window.location.search.substr(1).split('&').forEach(d => {
+									let s = d.split('=');
+                                    if (s[0] === "preUrl") {
+										window.location.href = s[1];
+										p = false;
+                                    }
+								})
+							if(p)
+								window.location.href = "/Pages/Product/list.aspx";
                         } else {
                             alert(result.Message);
                         }
