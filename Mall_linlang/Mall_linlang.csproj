@@ -119,6 +119,28 @@
     <Content Include="Content\css\show.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\sumoselect.css" />
+    <Content Include="Content\Custom\3216cb38-df21-485d-95c4-282bf90faf69.jpg" />
+    <Content Include="Content\Custom\bootstrap-theme.css" />
+    <Content Include="Content\Custom\bootstrap.css" />
+    <Content Include="Content\Custom\bootstrap.js" />
+    <Content Include="Content\Custom\c7b63547-6a9b-4c67-bce1-3f0514e9f0f4.jpg" />
+    <Content Include="Content\Custom\jquery-3.js" />
+    <Content Include="Content\Custom\jquery.cookie.js" />
+    <Content Include="Content\Custom\jquery.js" />
+    <Content Include="Content\Custom\jquery.pagination.js" />
+    <Content Include="Content\Custom\jquery.tmpl.js" />
+    <Content Include="Content\Custom\jquery_002.js" />
+    <Content Include="Content\Custom\layer.js" />
+    <Content Include="Content\Custom\pagination.css" />
+    <Content Include="Content\Custom\Site.css" />
+    <Content Include="Content\Custom\theme\default\icon-ext.png" />
+    <Content Include="Content\Custom\theme\default\icon.png" />
+    <Content Include="Content\Custom\theme\default\layer.css" />
+    <Content Include="Content\Custom\theme\default\loading-0.gif" />
+    <Content Include="Content\Custom\theme\default\loading-1.gif" />
+    <Content Include="Content\Custom\theme\default\loading-2.gif" />
+    <Content Include="Content\Custom\validator.js" />
+    <Content Include="Content\Custom\validator.min.js" />
     <Content Include="Content\fonts\demo.css" />
     <Content Include="Content\fonts\demo.html" />
     <Content Include="Content\fonts\iconfont.css" />
@@ -382,9 +404,12 @@
     <Content Include="AJAX\Auth_Ajax.ashx" />
     <Content Include="AJAX\Cart_Ajax.ashx" />
     <Content Include="AJAX\verification_code.ashx" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Pages\Cart\Confirm.aspx" />
     <Content Include="Pages\Cart\List.aspx" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\Order\List.aspx" />
     <Content Include="Pages\Product\Detail.aspx" />
     <Content Include="Pages\Product\List.aspx" />
     <Content Include="Pages\Register.aspx" />
@@ -467,6 +492,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AuthPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Cart\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Cart\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Cart\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -481,9 +516,15 @@
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Order\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Order\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Product\Detail.aspx.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Product\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>

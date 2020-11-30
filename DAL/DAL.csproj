@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartHelper.cs" />
+    <Compile Include="OrderDataHelper.cs" />
     <Compile Include="ProductCategoryDataHelper.cs" />
     <Compile Include="ProductDataHelper.cs" />
     <Compile Include="EmployeeDataHelper.cs" />

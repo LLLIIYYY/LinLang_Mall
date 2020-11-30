@@ -20,7 +20,7 @@ namespace Model.Entity
         /// <summary>
         /// 用户ID
         /// </summary>
-        public int IUserIdd { get; set; }
+        public int UserId { get; set; }
         /// <summary>
         /// 订单金额
         /// </summary>
@@ -45,5 +45,12 @@ namespace Model.Entity
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+
+
+        public string Source { get; set; }
+        public int ProId { get; set; }
+        public int Count { get; set; }
+        public string cartsId { get; set; }
+        public int productId { get; set; }
     }
 }

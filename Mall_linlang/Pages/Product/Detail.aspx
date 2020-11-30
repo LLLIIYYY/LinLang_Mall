@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Detail.aspx.cs" Inherits="Mall_linlang.Pages.Product.Detail" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Maincontent" runat="server">
     <!--产品详细页样式-->
 	<div class="clearfix Inside_pages">
 		<div class="Location_link">
@@ -12,13 +12,13 @@
 				<div class="clearfix" id="detail_main_img">
 					<div class="layout_wrap preview">
 						<div id="vertical" class="bigImg">
-							<img src="http://localhost:65320/<%=entity.Picture %>" width="" height="" alt="" id="midimg" />
+							<img src="<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString+"upload/"+entity.Picture %>" width="" height="" alt="" id="midimg" />
 							<div id="winSelector"></div>
 						</div>
 
 						<!--smallImg end-->
 						<div id="bigView" style="display:none;">
-							<div><img width="800" height="800" alt="" src="" /></div>
+							<div><img width="800" height="800" alt="" src="<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString+"upload/"+entity.Picture %>" /></div>
 						</div>
 					</div>
 				</div>
@@ -77,22 +77,24 @@
 							<dd>
 								<div class="wrap_btn"> <a href="javascript:" class="wrap_btn1" id="btn_addToCrt"
 										title="加入购物车"></a>
-									<a href="javascript:" class="wrap_btn2" title="立即购买"></a> </div>
+									<a href="javascript:" class="wrap_btn2" title="立即购买" id="btn_buyNow"></a> </div>
 							</dd>
 						</dl>
 					</div>
+                    <script src="../../Content/Custom/jquery.cookie.js"></script>
                     <script type="text/javascript">
                         $(function () {
+                            console.log($('#txt_id').val())
                             var quantity = {
                                 value: 1,
                                 increate: function () {
                                     $('#txt_name').val(++quantity.value);
                                 },
                                 reduce: function () {
-                                    if (quantity.value > 1) {
+                                    if (quantity.value>1) {
                                         $('#txt_name').val(--quantity.value);
                                     }
-
+                                  
                                 },
                                 input: function () {
                                     var value = $('#txt_name').val();
@@ -109,12 +111,13 @@
                                         {
                                             type: 'ADD',
                                             ProductId: $('#txt_id').val(),
-                                            ProductCount: quantity.value
+                                            ProductCount:quantity.value
                                         },
 
                                         function (result) {
                                             console.log(result);
-                                            if (result.Code == 10001) {
+                                            if (result.Code == 10001)
+                                            {
                                                 location.href = '/Pages/Login';
                                             } else if (result.Code == 0) {
                                                 alert('成功添加到购物车')
@@ -147,6 +150,22 @@
                                 quantity.addToCart();
 
                             })
+                            //detail详情页面，立即购买按钮点击事件
+                            $('#btn_buyNow').on('click', function () {
+                               
+                               
+                                //let关键字定义对象，表示只在当前内容中有效
+                                let obj = {
+                                    ProId: $('#txt_id').val(),
+                                    count: quantity.value,
+                                    source: 'detail'
+                                };
+                                $.cookie('confilmInfo', JSON.stringify(obj), { path: '/' });
+                                location.href = "/pages/Cart/Confirm";//跳转订单确认页面
+
+
+                            });
+
 
                         })
 
@@ -278,7 +297,7 @@
 									只有购买过该商品的用户才能进行评价。</dt>
 								<dd>
 									<input type="submit" class="Publication_btn" title="" onclick="send_cooment()"
-                                        value="发表评论">
+										value="发表评论">
 								</dd>
 							</dl>
 						</div>
@@ -1621,13 +1640,13 @@
 						</script>
 					</div>
 					<script type="text/javascript">
-                        $('.CommentTab ul').find('li').click(function () {
-                            $('.CommentTab ul').find('li').removeClass('active');
-                            $('.CommentText').css({ display: 'none' });
-                            $(this).addClass('active');
-                            $('.CommentText').eq($(this).index()).css({ display: 'block' });
-                        });
-                    </script>
+						$('.CommentTab ul').find('li').click(function () {
+							$('.CommentTab ul').find('li').removeClass('active');
+							$('.CommentText').css({ display: 'none' });
+							$(this).addClass('active');
+							$('.CommentText').eq($(this).index()).css({ display: 'block' });
+						});
+					</script>
 				</div>
 			</div>
 		</div>

@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScript", "SqlScript", "{
 	ProjectSection(SolutionItems) = preProject
 		proc_Cart.sql = proc_Cart.sql
 		proc_Employee.sql = proc_Employee.sql
+		proc_Order.sql = proc_Order.sql
 		proc_Product.sql = proc_Product.sql
 		proc_ProductCategory.sql = proc_ProductCategory.sql
 		SQLQuery1.sql = SQLQuery1.sql

@@ -78,7 +78,7 @@
 				<div class="Filter_list clearfix">
 					<div class="Filter_title"><span>一级分类：</span></div>
 					<div class="p_f_name CategoryId_box">
-						<input type="radio" name="CategoryId" value="0" checked="checked"/>全部
+						<input type="radio" name="CategoryId" value="-1" checked="checked"/>全部
 					</div>
 				</div>
 				<div class="Filter_list clearfix">
@@ -172,20 +172,7 @@
 				<!--产品列表样式-->
 				<div class="p_list clearfix">
 					<ul>
-						<li class="gl-item">
-							<em class="icon_special tejia"></em>
-							<div class="Borders">
-								<div class="img"><a href="Detail.aspx"><img src="/Content/images/P_1.jpg"
-											style="width:220px;height:220px"></a></div>
-								<div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-								<div class="name"><a href="Detail.aspx">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-								<div class="Review">已有<a href="Detail.aspx">2345</a>评论</div>
-								<div class="p-operate">
-									<a href="Detail.aspx" class="p-o-btn Collect"><em></em>收藏</a>
-									<a href="Detail.aspx" class="p-o-btn shop_cart"><em></em>加入购物车</a>
-								</div>
-							</div>
-						</li>
+						
 					</ul>
 					<div class="Paging">
 						<div class="Pagination" id="pager"></div>
@@ -200,7 +187,7 @@
 			<li class="gl-item">
 				<em class="icon_special tejia"></em>
 				<div class="Borders">
-					<div class="img"><a href="Detail.aspx?id={{= Id}}"><img src="/upload/{{= Picture}}"
+					<div class="img"><a href="Detail.aspx?id={{= Id}}"><img src="<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString %>upload/{{= Picture}}"
 								style="width:220px;height:220px"></a></div>
 					<div class="Price"><b>¥{{= Price}}</b><span>[¥49.01/500g]</span></div>
 					<div class="name"><a href="Detail.aspx">{{= Name}} {{= Description}}</a></div>
@@ -230,10 +217,11 @@
                     dataType: 'json',
                     data: { ParentId: ParentId, pageIndex: 1, pageSize: 9999 },
                     success: function (res) {
-                        let c_html = '<input type="radio" name="' + name + '" value="' + (name == 'SubCategoryId' ? '0' :'-1')+'" checked="checked"/> 全部 ';
-                        res.Data.list.forEach(c => {
-                            c_html += '<input type="radio" name="' + name + '" value="' + c.Id + '" /> ' + c.Category + ' ';
-                        });
+                        let c_html = '<input type="radio" name="' + name + '" value="-1" checked="checked"/> 全部 ';
+                        if (!(name === 'SubCategoryId' && ParentId == -1))
+							res.Data.list.forEach(c => {
+								c_html += '<input type="radio" name="' + name + '" value="' + c.Id + '" /> ' + c.Category + ' ';
+							});
                         el.html(c_html);
                     }
                 })
@@ -248,10 +236,11 @@
 				SubCategoryId: -1,
             },
 			getData() {
+                $(".p_list ul").html('<svg xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink" width="30px" height="30px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml: space="preserve"><path opacity="0.2" fill="#FF6700" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path><path fill="#FF6700" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(42.1171 20 20)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform></path></svg >');
                 let that = this;
                 pageObj.option.CategoryId = $('input[name=CategoryId]:checked').val()
                 pageObj.option.SubCategoryId = $('input[name=SubCategoryId]:checked').val()
-
+				let svg = $();
                 $.ajax({
                     url: '/Ajax/Product.ashx?type=GetAllByPage',
                     method: 'post',
@@ -264,8 +253,11 @@
                 })
 			},
             renderList(list) {
-                let t_html = $('#list_tmpl').tmpl(list);
-                $(".p_list ul").html(t_html);
+				let t_html = $('#list_tmpl').tmpl(list);
+                if (t_html.length > 0)
+					$(".p_list ul").html(t_html);
+				else
+                    $(".p_list ul").html("<h2>暂无此类商品</h2>");
 			},
 			renderPager(pageCount, index) {
 				let that = this;

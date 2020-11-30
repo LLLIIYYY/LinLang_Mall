@@ -4,20 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Model;
-using BLL;
-using Model.Entity;
 
-namespace Mall_linlang.Pages.Cart
+namespace Mall_linlang.Pages.Order
 {
-    public partial class List : AuthPage
+    public partial class WebForm1 : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
-         
-
-
 
         }
     }

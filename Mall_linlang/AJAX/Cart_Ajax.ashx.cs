@@ -65,7 +65,7 @@ namespace Mall_linlang.AJAX
             int ProductId = context.Request["ProductId"].ToInt();
             int ProdeuctCount= context.Request["ProductCount"].ToInt();
             CartService service = new CartService();
-            Model.Entity.CartEntity ca = new Model.Entity.CartEntity();
+            CartEntity ca = new CartEntity();
             ca.ProductId = ProductId;
             ca.ProductCount = ProdeuctCount;
             ca.UserId = AuthUser.Id;

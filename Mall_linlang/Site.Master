@@ -27,8 +27,8 @@
 					<ul class="clearfix">
 						<li class="hd_menu_tit zhuce" data-addclass="hd_menu_hover">欢迎光临本店！<a href="/Pages/Login"
 								class="red">[请登录]</a> 新用户<a href="/Pages/Register" class="red">[免费注册]</a></li>
-						<li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="User_Orderform.html">我的订单</a></li> <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="User.html">个人中心</a>
-						</li> <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="User.html">个人中心</a>
+						<li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="/Pages/Order/List">我的订单</a></li> <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="/Pages/Order/List">个人中心</a>
+						</li> <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="/Pages/Order/List">个人中心</a>
 						</li>
 						<li style="background: 0" class="hd_menu_tit" data-addclass="hd_menu_hover"> <a
 								href="/Pages/Cart/List">购物车</a> </li>
@@ -43,13 +43,13 @@
 			<div class="Search">
 				<p><input name="" type="text" class="text" /><input name="" type="submit" value="搜 索"
 						class="Search_btn" /></p>
-				<p class="Words"><a href="Product_Detail.html">苹果</a><a href="Product_Detail.html">香蕉</a><a
-						href="Product_Detail.html">菠萝</a><a href="Product_Detail.html">西红柿</a><a
-						href="Product_Detail.html">橙子</a><a href="#">苹果</a></p>
+				<p class="Words"><a href="/Pages/Product/List">苹果</a><a href="/Pages/Product/List">香蕉</a><a
+						href="/Pages/Product/List">菠萝</a><a href="/Pages/Product/List">西红柿</a><a
+						href="/Pages/Product/List">橙子</a><a href="#">苹果</a></p>
 			</div>
 			<!--购物车样式-->
 			<div class="hd_Shopping_list" id="Shopping_list">
-				<div class="s_cart"><em class="iconfont icon-cart2"></em><a href="Shop_cart.html">我的购物车</a> <i
+				<div class="s_cart"><em class="iconfont icon-cart2"></em><a href="/Pages/Cart/List">我的购物车</a> <i
 						class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">0</i></div>
 				<div class="dorpdown-layer">
 					<div class="spacer"></div>
@@ -58,12 +58,12 @@
 						<li>
 							<div class="img"><img src="/Content/images/p_4.jpg"></div>
 							<div class="content">
-								<p><a href="Product_Detail.html">产品名称</a></p>
+								<p><a href="/Pages/Product/List">产品名称</a></p>
 								<p>颜色分类:紫花8255尺码:XL</p>
 							</div>
 							<div class="Operations">
 								<p class="Price">￥55.00</p>
-								<p><a href="Product_Detail.html">删除</a></p>
+								<p><a href="/Pages/Product/List">删除</a></p>
 							</div>
 						</li>
 					</ul>
@@ -84,9 +84,9 @@
 						<!--左侧栏目开始-->
 						<ul class="Menu_list">
 							<li class="name">
-								<div class="Menu_name"><a href="product_list.html">面部护理</a> <span>&lt;</span></div>
+								<div class="Menu_name"><a href="/Pages/Product/List">面部护理</a> <span>&lt;</span></div>
 								<div class="link_name">
-									<p><a href="Product_detail.html">茅台</a> <a href="#">五粮液</a> <a href="#">郎酒</a> <a
+									<p><a href="/Pages/Product/List">茅台</a> <a href="#">五粮液</a> <a href="#">郎酒</a> <a
 											href="#">剑南春</a></p>
 								</div>
 
@@ -94,7 +94,7 @@
 							<li class="name">
 								<div class="Menu_name"><a href="#">身体护理</a><span>&lt;</span></div>
 								<div class="link_name">
-									<a href="Product_detail.html"> 面霜</a><a href="#">眼霜</a><a href="#"> 面膜</a><a
+									<a href="/Pages/Product/List"> 面霜</a><a href="#">眼霜</a><a href="#"> 面膜</a><a
 										href="#">护肤套装</a>
 
 								</div>
@@ -152,7 +152,7 @@
 				<!--菜单栏-->
 				<div class="Navigation" id="Navigation">
 					<ul class="Navigation_name">
-						<li><a href="Index.html">首页</a></li>
+						<li><a href="/">首页</a></li>
 						<li class="on"><a href="Pages/Product/List.aspx">产品列表</a></li>
 					</ul>
 				</div>
@@ -166,21 +166,21 @@
 		<div class="index_style">
 			<ul class="wrap">
 				<li>
-					<a href="Product_Detail.html"><img src="/Content/images/slogen_34.png" data-bd-imgshare-binded="1"></a>
+					<a href="/Pages/Product/List"><img src="/Content/images/slogen_34.png" data-bd-imgshare-binded="1"></a>
 					<b>安全保证</b>
 					<span>多重保障机制 认证商城</span>
 				</li>
-				<li><a href="Product_Detail.html"><img src="/Content/images/slogen_28.png" data-bd-imgshare-binded="2"></a>
+				<li><a href="/Pages/Product/List"><img src="/Content/images/slogen_28.png" data-bd-imgshare-binded="2"></a>
 					<b>正品保证</b>
 					<span>正品行货 放心选购</span>
 				</li>
 				<li>
-					<a href="Product_Detail.html"><img src="/Content/images/slogen_30.png" data-bd-imgshare-binded="3"></a>
+					<a href="/Pages/Product/List"><img src="/Content/images/slogen_30.png" data-bd-imgshare-binded="3"></a>
 					<b>七天无理由退换</b>
 					<span>七天无理由保障消费权益</span>
 				</li>
 				<li>
-					<a href="Product_Detail.html"><img src="/Content/images/slogen_31.png" data-bd-imgshare-binded="4"></a>
+					<a href="/Pages/Product/List"><img src="/Content/images/slogen_31.png" data-bd-imgshare-binded="4"></a>
 					<b>天天低价</b>
 					<span>价格更低，质量更可靠</span>
 				</li>

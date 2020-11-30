@@ -48,7 +48,7 @@ end
 go
 
 
-create proc p_addToCart
+alter proc p_addToCart
 (
 @UserId int,
 @ProductId int,
@@ -67,14 +67,17 @@ begin
 			end
 			else
 			begin
-insert into Cart values(
-1,
-@UserId,
-@ProductId,
-@ProdeuctCount,
-getdate(),
-getdate()
-)
+insert into Cart (UserId, ProductId, ProductCount, CreatedTime, ModifiedTime)
+	values(
+		@UserId,
+		@ProductId,
+		@ProdeuctCount,
+		getdate(),
+		getdate()
+	)
 end
 set @success=1
 end
+
+
+

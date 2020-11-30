@@ -142,7 +142,7 @@ CreatedTime	 Datetime			not null	--收藏时间
 go
 --12.购物车
 create table Cart(
-Id	Int	 primary key not null,	
+Id	Int	 primary key identity(1,1),	
 UserId	Int		,		--用户Id
 ProductId	Int			not null,	--商品Id
 ProductCount	Int			not null,	--数量
