@@ -64,7 +64,7 @@
                     <td class="name">
                         <div class="img">
                             <a href="Product_Detail.html">
-                                <img src="http://localhost:65320/{{= Picture}}" /></a>
+                                <img src="http://<%=  ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString%>upload/{{= Picture}}" /></a>
                         </div>
                         <div class="p_name"><a href="Product_Detail.html">{{= ProName}}</a></div>
                     </td>
@@ -128,21 +128,14 @@
                     });
                     //监听+按钮事件
                     $('#cart_list').on('click', '.btn-increase', function () {
-
                         var obj = $(this).tmplItem();
-
                         pageObj.increase(obj);
-
                     });
                     //监听-按钮事件
                     $('#cart_list').on('click', '.btn-reduce', function () {
-
-
                         var obj = $(this).tmplItem();
-                        pageObj.update(tmplItem.data.Id, tmplItem.data.ProductCount);
+                        pageObj.update(obj.data.Id, obj.data.ProductCount);
                         pageObj.reduce(obj);
-
-
                     });
                     //监听文本框
                     $('#cart_list').on('keyup', '.number_text', function () {
@@ -226,7 +219,6 @@
                         if (tmplItem.data.ProductCount > 1)
                         {
                             tmplItem.data.ProductCount--;
-
                             //从模板中取得当前行内的目标元素，并修改他的显示内容（小计金额，产品数量）
                             $(tmplItem.nodes).eq(0).find('input[name="qty_item_"]').val(tmplItem.data.ProductCount);
                             $(tmplItem.nodes).eq(0).find('.subAmount').text(tmplItem.data.ProductCount * tmplItem.data.Price);
@@ -235,13 +227,9 @@
                             if ($(tmplItem.nodes).eq(0).find('input[name="checkitems"]').is(':checked')) {
                                 pageObj.totalAmount -= tmplItem.data.Price;
                                 $('#Total_price').text((pageObj.totalAmount).toFixed(2));
-
                             };
 
                         }
-
-
-
                     },
                     increase:function (tmplItem) {
                         //首先判断该产品的数量是否大于1，大于1就往下自减，否则不进行任何操作

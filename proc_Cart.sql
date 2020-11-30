@@ -1,7 +1,7 @@
 use Store
 go
 
-create proc p_readCart
+alter proc p_readCart
 (
 		@isPaging bit=0,
 		@userId int,
@@ -12,34 +12,29 @@ create proc p_readCart
 begin
 		if(isnull (@isPaging,0)=0)
 		begin
-
-		select  Cart.*,
-				pro.Name,
-				pro.Price,
-				pro.Picture
-		from	cart
-		join    Product pro on Cart.ProductId=pro.Id
-		where   Cart.UserId=@userId
-		order by CreatedTime desc
-end
-else
-begin
-
-
-------·ÖÒ³
-		select  Cart.*,
-				pro.Name,
-				pro.Price,
-				pro.Picture
-		from    cart
-		join    Product pro on Cart.ProductId=pro.Id
-		where   Cart.UserId=@userId
-		order by CreatedTime desc
-		offset(@pageSize-1)*@pageSize rows
-		fetch next @pageSize rows only
-end
-
-
+			select  Cart.*,
+					pro.Name ProName,
+					pro.Price,
+					pro.Picture
+			from	cart
+			join    Product pro on Cart.ProductId=pro.Id
+			where   Cart.UserId=@userId
+			order by CreatedTime desc
+		end
+		else
+		begin
+		------·ÖÒ³
+				select  Cart.*,
+						pro.Name ProName,
+						pro.Price,
+						pro.Picture
+				from	cart
+				join    Product pro on Cart.ProductId=pro.Id
+				where   Cart.UserId=@userId
+				order by CreatedTime desc
+				offset(@pageIndex-1)*@pageSize rows
+				fetch next @pageSize rows only
+		end
 		select @records=count(*) 
 		from	 Cart
 		join	 Product pro on Cart.ProductId=pro.Id
@@ -48,7 +43,7 @@ end
 go
 
 
-alter proc p_addToCart
+create proc p_addToCart
 (
 @UserId int,
 @ProductId int,

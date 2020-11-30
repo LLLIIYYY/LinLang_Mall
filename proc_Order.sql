@@ -1,3 +1,5 @@
+use Store
+go
 
 create proc p_createorder
 (
@@ -170,7 +172,7 @@ go
 
 
 
-alter proc readconfilm
+create proc readconfilm
 (
 @cartids varchar(100),
 @success int output

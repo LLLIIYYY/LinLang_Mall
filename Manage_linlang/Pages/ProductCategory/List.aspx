@@ -14,18 +14,18 @@
         </ol>
 
         <div class="form-row">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-6">
                 <label for="Category" class="">类别名称</label>
                 <input class="form-control" type="text" Id="Category" />
             </div>
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-6">
                 <label for="ParentId" class="">一级分类</label>
                 <select class="form-control" id="ParentId">
                         <option value="-1">全部</option>
                         <option value="0">无</option>
                     </select>
             </div>
-            <div class="form-group col-md-2"> <button onclick="pageObj.getData()" style="margin-top:25px" class="btn btn-primary">查询</button></div>
+            <div class="form-group "> <button onclick="pageObj.getData()" class="form-control col-sm-6 btn btn-primary" style="margin-top:5px">查询</button></div>
         </div>
         
         <table class="table">

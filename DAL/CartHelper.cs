@@ -27,7 +27,7 @@ namespace DAL
             }
             //第二步：命令对象
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "p_addToCart";
+            cmd.CommandText = "p_addToCart21";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@UserId", productcate.UserId));
             cmd.Parameters.Add(new SqlParameter("@ProductId", productcate.ProductId));
@@ -48,7 +48,7 @@ namespace DAL
 
         //查询
         //查询
-        public List<CartEntity> Allselect(CartEntity employee, Pageination pageentity, bool isPaging=true)
+        public List<CartEntity> Allselect(CartEntity employee, Pageination pageentity)
         {
             //第一步：连接对象
             SqlConnection conn = new SqlConnection(connStr);
@@ -61,7 +61,7 @@ namespace DAL
             cmd.CommandText = "p_readCart";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@userId", employee.UserId));
-            cmd.Parameters.Add(new SqlParameter("@isPaging", isPaging));
+            //cmd.Parameters.Add(new SqlParameter("@isPaging", isPaging));
             cmd.Parameters.Add(new SqlParameter("@pageIndex", pageentity.PageIndex));
             cmd.Parameters.Add(new SqlParameter("@pageSize", pageentity.PageSize));
             SqlParameter records = new SqlParameter("@records", SqlDbType.Int);
@@ -73,7 +73,7 @@ namespace DAL
             List<CartEntity> list = new List<CartEntity>();
             while (reader.Read())//从reader中的逐条的读取下一行数据是否成功
             {
-                list.Add(new CartEntity
+                list.Add(new Model.Entity.CartEntity
                 {
                     Id = reader["Id"].ToInt(),
                     ProName = reader["ProName"].ToString(),
@@ -91,6 +91,108 @@ namespace DAL
             return list;
         }
 
+
+        //删除
+        public bool Delete(string id)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+
+
+            }
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "Del";
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.Add(new SqlParameter("@id", id));
+            SqlParameter records = new SqlParameter("@success", SqlDbType.Int);
+            records.Direction = ParameterDirection.Output;
+            comm.Parameters.Add(records);
+            int i = comm.ExecuteNonQuery();
+            conn.Close();
+            return Convert.ToBoolean(records.Value);
+
+        }
+
+
+        //修改
+
+
+        public bool Update(CartEntity employee)
+        {
+            //第一步：连接对象
+            SqlConnection conn = new SqlConnection(connStr);
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            //第二步：命令对象
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "p_updateCart";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new SqlParameter("@UserId", employee.UserId));
+            cmd.Parameters.Add(new SqlParameter("@ProductCount", employee.ProductCount));
+
+            SqlParameter success = new SqlParameter("@success", SqlDbType.Bit);
+            success.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(success);
+
+            //第三步：执行命令
+            int i = cmd.ExecuteNonQuery();//受影响的行数
+            //第四步：关闭连接
+            conn.Close();
+            conn.Dispose();
+
+            return Convert.ToBoolean(success.Value);
+        }
+
+
+
+        //提交购物车数据查询
+
+        public List<CartEntity> secect(string cartentity)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "readconfilm";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@cartids", cartentity));
+            SqlParameter success = new SqlParameter("@success", SqlDbType.Bit);
+
+            success.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(success);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<CartEntity> list = new List<CartEntity>();
+
+            while (reader.Read())
+            {
+                list.Add(new Model.Entity.CartEntity
+                {
+                    Id = reader["Id"].ToInt(),
+                    ProName = reader["Name"].ToString(),
+                    Picture = reader["Picture"].ToString(),
+                    ProductId = reader["ProductId"].ToInt(),
+                    ProductCount = reader["ProductCount"].ToInt(),
+                    Price = reader["Price"].To<decimal>(),
+                });
+
+            }
+            reader.Close();
+
+            conn.Close();
+
+            return list;
+
+        }
 
 
     }

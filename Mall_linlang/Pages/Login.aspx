@@ -18,6 +18,22 @@
 	<script src="/Content/js/validator.js"></script>
 	<script src="/Content/js/layer/layer.js"></script>
 	<title>用户登录</title>
+    <style>
+
+        @media screen and (max-width: 600px) {
+			.Reg_log_style{
+				width:auto;
+				min-width:510px;
+			}
+			.left_img, .right_img{
+				display:none;
+			}
+			#btn_signin span{
+				position:static;
+			}
+        }
+    </style>
+
 </head>
 
 <body>

@@ -15,6 +15,89 @@
 	<script src="/Content/js/footer.js" type="text/javascript"></script>
 	<script src="/Content/js/validator.js"></script>
 	<title>网站首页</title>
+	<style type="text/css">
+			body{
+				min-width:376px!important;
+			}
+			#header_top .Inside_pages{
+				width:auto;
+			}
+			#header_moble{
+				position:relative;
+				padding:5px;
+				display:none;
+				align-items:center;
+				justify-content:space-between;
+				font-size:1.5rem;
+			}
+			#header_moble .Search{
+				background-color:#ff7200;
+				padding:2px 5px;
+				border-radius:10px;
+			}
+			#header_moble .text{
+			}
+			#header_moble .Search_btn{
+				color:white;
+				background-color:#ff7200;
+				border:none;
+				height:100%;
+			}
+			#header_moble .menu-icon{
+				height:100%;
+				cursor:pointer;
+			}
+	        #header_moble .menu {
+				position:absolute;
+				top:44px;
+				left:0;
+				width:100%;
+				z-index:999;
+				height:0;
+				background-color:#ff7200;
+				transition:linear .2s;
+				overflow:hidden;
+				border-bottom:1px solid gray;
+	        }
+			#header_moble .menu li:hover{
+				background-color:#ffff33;
+			}
+			#header_moble .menu li a{
+				padding:10px 0;
+				width:100%;
+				display:block;
+			}
+			#header_moble .menu li{
+				transition:all .5s;
+				cursor:pointer;
+				width:100%;
+				text-align:center;
+			}
+	    @media screen and (max-width: 710px) {
+			#header_top{
+				display:none;
+			
+			}
+			#header_moble{
+				display:flex;
+			}
+			.index_style{
+				width:100%;
+				display:flex;
+				flex-wrap:wrap;
+			}
+	    }
+	</style>
+    <script type="text/javascript">
+		window.onload = () => {
+			console.log("asd")
+			$("#header_moble .menu-icon").click(() => {
+				console.log($("#header_moble .menu").height())
+				$("#header_moble .menu").height($("#header_moble .menu").height() >= 176 ? 0 : 176);
+
+			})
+		}
+    </script>
 </head>
 
 <body>
@@ -161,6 +244,33 @@
 			</div>
 		</div>
 	</div>
+    <div id="header_moble">
+		<div class="Search">
+			<p>
+				<input name="" type="text" class="text" />
+				<input name="" type="submit" value="搜 索" class="Search_btn" />
+			</p>
+		</div>
+        <div class="menu-icon">
+			<svg class="icon" style="width: 1.2744140625em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1305 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1887"><path d="M0.837818 75.218317c0 19.642164 8.098902 39.191237 21.969435 53.06177 13.963624 13.963624 33.512697 22.062525 53.247951 22.062525a76.055204 76.055204 0 0 0 53.06177-21.969434c13.963624-13.963624 22.062525-33.512697 22.062526-53.154861A76.055204 76.055204 0 0 0 129.303156 21.970365 76.055204 76.055204 0 0 0 76.055204 0.000931a76.055204 76.055204 0 0 0-53.247951 21.969434A76.706839 76.706839 0 0 0 0.837818 75.218317M0.837818 476.160498c0 19.642164 8.005811 39.377419 21.969435 53.247952 13.963624 13.963624 33.419606 21.969435 53.247951 21.969434a76.241385 76.241385 0 0 0 53.154861-21.969434 75.962113 75.962113 0 0 0 21.969435-53.247952 76.241385 76.241385 0 0 0-21.969435-53.154861 75.962113 75.962113 0 0 0-53.154861-21.969434 76.241385 76.241385 0 0 0-53.247951 21.969434 75.962113 75.962113 0 0 0-21.969435 53.154861M0.837818 877.19577c0 19.642164 8.005811 39.284328 21.969435 53.247951 13.963624 13.963624 33.419606 21.969435 53.247951 21.969435a76.241385 76.241385 0 0 0 53.154861-21.969435 75.962113 75.962113 0 0 0 21.969435-53.247951 76.241385 76.241385 0 0 0-21.969435-53.247952 75.962113 75.962113 0 0 0-53.154861-21.969434 76.241385 76.241385 0 0 0-53.247951 21.969434 76.520658 76.520658 0 0 0-21.969435 53.247952M1304.109361 75.218317c0 41.518508-32.395607 75.124295-72.331571 75.124295H373.945843c-40.029055 0-72.331571-33.512697-72.331571-75.124295C301.521181 33.513628 333.916788 0.000931 373.945843 0.000931h857.831947c40.029055 0 72.331571 33.605788 72.331571 75.217386M1231.77779 551.377884H373.945843c-40.029055 0-72.331571-33.605788-72.331571-75.217386 0-41.518508 32.302516-75.124295 72.331571-75.124295h857.831947c40.029055-0.186182 72.331571 33.512697 72.331571 75.124295 0 41.425417-32.395607 75.217386-72.331571 75.217386zM1304.109361 877.102679c0 41.611599-32.395607 75.310477-72.331571 75.310477H373.945843c-40.029055 0-72.331571-33.698878-72.331571-75.310477 0-41.425417 32.302516-75.124295 72.331571-75.124295h857.831947c40.029055-0.093091 72.331571 33.698878 72.331571 75.124295" p-id="1888"></path></svg>
+        </div>
+        <div class="menu">
+			<ul class="nav flex-column">
+			  <li class="nav-item">
+				<a class="nav-link active" href="/">首页</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/Pages/Cart/List">购物车</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/Pages/Product/List">产品列表</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/Pages/Order/List">我的订单</a>
+			  </li>
+			</ul>
+        </div>
+    </div>
 	<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
 	<div class="slogen">
 		<div class="index_style">

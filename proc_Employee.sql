@@ -1,7 +1,7 @@
 ﻿USE [Store]
 GO
 
-alter proc p_createEmployee 
+create proc p_createEmployee 
 (
 	@Name	Varchar(20),
 	@Gender	Int,
@@ -41,7 +41,7 @@ INSERT INTO [dbo].[Employee]
 end
 GO
 
-alter proc pc_Employee
+create proc pc_Employee
 (
 	@PageIndex int,
 	@PageSize decimal,
@@ -65,7 +65,7 @@ begin
 end
 go
 
-alter proc p_updateEmployee 
+create proc p_updateEmployee 
 (
 	@Id int,
 	@Name	Varchar(20),
@@ -96,7 +96,7 @@ end
 GO
 
 
-alter proc p_deleteEmployee 
+create proc p_deleteEmployee 
 (
 	@Id int,
 	@success bit = 0 output

@@ -1,8 +1,7 @@
 ﻿USE [Store]
-GO
-select * from Product
+GO 
 
-alter proc p_createProductCategory
+create proc p_createProductCategory
 (
 	@ParentId	Int,
 	@Category	Varchar(30),
@@ -35,7 +34,7 @@ INSERT INTO [dbo].[ProductCategory]
 end
 GO
 
-alter proc pc_ProductCategory
+create proc pc_ProductCategory
 (
 	@PageIndex int,
 	@PageSize decimal,
@@ -68,7 +67,7 @@ begin
 end
 go
 
-alter proc p_updateProductCategory
+create proc p_updateProductCategory
 (
 	@Id int,
 	@ParentId	Int = null,

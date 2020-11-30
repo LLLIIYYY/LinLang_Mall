@@ -14,23 +14,21 @@
             </ol>
             <label for="Name" >商品名称</label>
             <input class="form-control" id="Name" type="text" />
-            <div class="form-group">
-                <label for="CategoryId" class="col-sm-2 control-label">一级类别</label>
-                <div class="col-sm-10">
+            <div class="form-group" style="margin-top:5px">
+                <label for="CategoryId" class="col-sm-1 control-label">一级类别</label>
+                <div class="col-sm-5">
                     <select class="form-control" id="CategoryId" name="CategoryId">
                         <option value="-1">无</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="SubCategoryId" class="col-sm-2 control-label">二级类别</label>
-                <div class="col-sm-10">
+                <label for="SubCategoryId" class="col-sm-1 control-label">二级类别</label>
+                <div class="col-sm-5">
                     <select class="form-control" id="SubCategoryId" name="SubCategoryId">
                         <option value="-1">无</option>
                     </select>
-                </div>
+                    </div>
             </div>
-            <button class="form-control" onclick="query()">查询</button>
+            <button class="form-control btn btn-primary" style="margin-top:5px" onclick="query()">查询</button>
             
         <table class="table">
             <thead>
@@ -43,7 +41,7 @@
                     <td>商品价格</td>
                     <td>简介</td>
                     <td>库存</td>
-                    <td>操作 <a href="Add.aspx">新增商品</a></td>
+                    <td>操作 <a class="btn btn-sm btn-primary" href="Add.aspx">新增商品</a></td>
                 </tr>
             </thead>
             <tbody></tbody>

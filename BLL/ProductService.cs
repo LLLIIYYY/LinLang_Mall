@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Utils;
 using DAL;
+using Model.BusinessModel;
 using Model.Entity;
 
 namespace BLL
@@ -39,6 +40,12 @@ namespace BLL
         public bool Delete(ProductEntity product)
         {
             return new ProductDataHelper().Update(product);
+        }
+        public List<ProductEntity> Select(ProductEntity employee, Pageination pageentity)
+        {
+            ProductDataHelper helper = new ProductDataHelper();
+            List<ProductEntity> list = helper.Allselect(employee, pageentity);
+            return list;
         }
     }
 }

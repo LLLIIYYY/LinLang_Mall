@@ -404,6 +404,8 @@
     <Content Include="AJAX\Auth_Ajax.ashx" />
     <Content Include="AJAX\Cart_Ajax.ashx" />
     <Content Include="AJAX\verification_code.ashx" />
+    <Content Include="AJAX\Confilm_Ajax.ashx" />
+    <Content Include="AJAX\Product_AJAX.ashx" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\Cart\Confirm.aspx" />
@@ -457,6 +459,9 @@
     <Compile Include="AJAX\Cart_Ajax.ashx.cs">
       <DependentUpon>Cart_Ajax.ashx</DependentUpon>
     </Compile>
+    <Compile Include="AJAX\Confilm_Ajax.ashx.cs">
+      <DependentUpon>Confilm_Ajax.ashx</DependentUpon>
+    </Compile>
     <Compile Include="AJAX\Dictionary.cs" />
     <Compile Include="AJAX\Employee.ashx.cs">
       <DependentUpon>Employee.ashx</DependentUpon>
@@ -466,6 +471,9 @@
     </Compile>
     <Compile Include="AJAX\ProductCategory.ashx.cs">
       <DependentUpon>ProductCategory.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AJAX\Product_AJAX.ashx.cs">
+      <DependentUpon>Product_AJAX.ashx</DependentUpon>
     </Compile>
     <Compile Include="AJAX\User.ashx.cs">
       <DependentUpon>User.ashx</DependentUpon>

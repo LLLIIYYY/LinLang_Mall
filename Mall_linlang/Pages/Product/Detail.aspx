@@ -12,13 +12,13 @@
 				<div class="clearfix" id="detail_main_img">
 					<div class="layout_wrap preview">
 						<div id="vertical" class="bigImg">
-							<img src="<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString+"upload/"+entity.Picture %>" width="" height="" alt="" id="midimg" />
+							<img src="http://<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString+"upload/"+entity.Picture %>" width="" height="" alt="" id="midimg" />
 							<div id="winSelector"></div>
 						</div>
 
 						<!--smallImg end-->
 						<div id="bigView" style="display:none;">
-							<div><img width="800" height="800" alt="" src="<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString+"upload/"+entity.Picture %>" /></div>
+							<div><img width="800" height="800" alt="" src="http://<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString+"upload/"+entity.Picture %>" /></div>
 						</div>
 					</div>
 				</div>

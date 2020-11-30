@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Common;
 using Common.Extension;
+using Model.BusinessModel;
 
 namespace DAL
 {
@@ -174,6 +175,56 @@ namespace DAL
             cmd.Dispose();
             conn.Close();
             return res;
+        }
+
+        public List<ProductEntity> Allselect(ProductEntity employee, Pageination pageentity)
+        {
+            //第一步：连接对象
+            SqlConnection conn = new SqlConnection(connStr);
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            //第二步：命令对象
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "sel_product";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", employee.Id));
+            cmd.Parameters.Add(new SqlParameter("@categoryId", employee.CategoryId));
+            cmd.Parameters.Add(new SqlParameter("@subcategoryId", employee.SubCategoryId));
+            cmd.Parameters.Add(new SqlParameter("@Name", employee.Name));
+            cmd.Parameters.Add(new SqlParameter("@pageIndex", pageentity.PageIndex));
+            cmd.Parameters.Add(new SqlParameter("@pageSize", pageentity.PageSize));
+            SqlParameter records = new SqlParameter("@records", SqlDbType.Int);
+            records.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(records);
+
+            //第三步：执行命令
+            SqlDataReader reader = cmd.ExecuteReader();//受影响的行数
+            List<ProductEntity> list = new List<ProductEntity>();
+            while (reader.Read())//从reader中的逐条的读取下一行数据是否成功
+            {
+                list.Add(new ProductEntity
+                {
+                    Id = reader["Id"].ToInt(),
+                    Picture = reader["Picture"].ToString(),
+                    Name = reader["Name"].ToString(),
+                    CategoryId = reader["CategoryId"].ToInt(),
+                    ParentCategory = reader["parentCategory"].ToString(),
+                    SubCategory = reader["Category"].ToString(),
+                    SubCategoryId = reader["SubCategoryId"].ToInt(),
+                    Price = reader["Price"].To<int>(),
+                    Description = reader["Description"].ToString(),
+                    Summary = reader["Summary"].ToString()
+                });
+            }
+            //[重点]必须在reader读取数据完成以后。关闭reader；然后才能获取输出参数的值
+            reader.Close();
+            pageentity.Records = records.Value.ToInt();
+            //第四步：关闭连接
+            conn.Close();
+
+            return list;
         }
     }
 }

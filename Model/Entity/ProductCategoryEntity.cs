@@ -24,7 +24,8 @@ namespace Model.Entity
             this.Deleted = Convert.ToBoolean(sqlDataReader["Deleted"]);
             this.CreatedTime = Convert.ToDateTime(sqlDataReader["CreatedTime"]);
             this.ModifiedTime = Convert.ToDateTime(sqlDataReader["ModifiedTime"]);
-            this.ParentCategory = Convert.ToString(sqlDataReader["ParentCategory"]);
+            string pc = Convert.ToString(sqlDataReader["ParentCategory"]);
+            this.ParentCategory = pc.Length>0?pc:"无";
         }
 
         /// <summary>

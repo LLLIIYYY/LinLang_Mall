@@ -29,5 +29,30 @@ namespace BLL
             List<CartEntity> list = helper.Allselect(employee, pageentity);
             return list;
         }
+
+        public bool Delete(string id)
+        {
+            CartHelper helper = new CartHelper();
+            bool bo = helper.Delete(id);
+            return bo;
+
+        }
+
+
+        public bool Update(CartEntity productcate)
+        {
+            CartHelper helper = new CartHelper();
+            bool bo = helper.Update(productcate);
+            return bo;
+
+        }
+
+
+        public List<CartEntity> ConfilmRead(string employee)
+        {
+            CartHelper helper = new CartHelper();
+            List<CartEntity> list = helper.secect(employee);
+            return list;
+        }
     }
 }

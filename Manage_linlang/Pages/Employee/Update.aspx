@@ -73,8 +73,7 @@
                     dataType: 'json',
                     data: postData,//要发送到服务器的数据
                     success: function (reslut) {
-                        alert(reslut.Message)
-
+                        alert(reslut.Message);
                     }
                 });
             });

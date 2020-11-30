@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScript", "SqlScript", "{8EAABC63-9C11-405A-9D68-358462E54E4C}"
 	ProjectSection(SolutionItems) = preProject
+		pc_user.sql = pc_user.sql
 		proc_Cart.sql = proc_Cart.sql
 		proc_Employee.sql = proc_Employee.sql
 		proc_Order.sql = proc_Order.sql

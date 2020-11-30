@@ -12,15 +12,15 @@
                 <li><a href="default.aspx">首页</a></li>
                 <li class="active">员工管理</li>
             </ol>
-            <label for="Name" >姓名</label>
-            <input class="form-control" id="Name" type="text" />
+            <label class="col-sm-1" for="Gender" >姓名</label>
             <select id="Gender" class="form-control">
                 <option value="0">全部</option>
                 <option value="1">男</option>
                 <option value="2">女</option>
             </select>
-            <button class="form-control" onclick="query()">查询</button>
-            
+            <label class="col-sm-1" for="Name" >姓名</label>
+            <input class="form-control col-sm-5" id="Name" type="text" />
+            <button class="form-control col-sm-6 btn btn-primary" style="margin-top:5px" onclick="query()">查询</button>
         <table class="table">
             <thead>
                 <tr>
@@ -29,7 +29,7 @@
                     <td>性别</td>
                     <td>Email</td>
                     <td>手机号码</td>
-                    <td>操作 <a href="Add.aspx">新增员工</a></td>
+                    <td>操作 <a class="btn btn-sm btn-primary" href="Add.aspx">新增员工</a></td>
                 </tr>
             </thead>
             <tbody></tbody>

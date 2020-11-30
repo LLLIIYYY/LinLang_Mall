@@ -1,9 +1,6 @@
-﻿USE [Store]
-GO
-select * from productCategory
-select pc.Category, p.* from product p left join ProductCategory pc on p.CategoryId=pc.Id;
-
-alter proc p_createProduct
+﻿USE [Store] 
+go
+create proc p_createProduct
 (
 	@CategoryId	int,	--类别ID
 	@SubCategoryId	Int,	--子类别ID
@@ -57,7 +54,7 @@ INSERT INTO [dbo].[Product]
 end
 GO
 
-alter proc pc_Product
+create proc pc_Product
 (
 	@PageIndex int = 1,
 	@PageSize decimal = 10,
@@ -108,7 +105,7 @@ begin
 end
 go
 
-alter proc p_updateProduct
+create proc p_updateProduct
 (
 	@Id int,
 	@CategoryId	int = null,	--类别ID

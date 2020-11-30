@@ -1,4 +1,4 @@
-﻿create database Store
+﻿ 
 use store
 go
 --1.员工信息表
@@ -28,12 +28,12 @@ ModifiedTime	Datetime	,
 IsRecommend	Bit			not null,	--是否推荐该分类；推荐分类展示到首页的分类列表
 Deleted	bit				--是否已删除
 
-)
+) 
 go
 --3.商品表
 create table Product(
 Id	Int		primary key	identity(1,1),	
-CategoryId	int			not null,	--类别ID
+CategoryId	int			not null,	--类别ID 
 SubCategoryId	Int			not null,	--子类别ID
 Name	Varchar	(100)		not null,	--商品名称
 Summary	Varchar	(250)		not null,	--简介

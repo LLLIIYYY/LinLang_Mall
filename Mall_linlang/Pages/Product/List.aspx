@@ -1,6 +1,72 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Mall_linlang.Pages.Product.List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+	<style>
+	    @media screen and (max-width: 710px) {
+			.side_content{
+				display:none;
+			 }	
+			.page_right_style{
+				float:none;
+				width:100%;
+				padding:0;
+				margin:0;
+			}
+			.Inside_pages {
+				width:100% !important;
+			}
+			#Filter_style{
+				width:100% !important;
+				overflow:hidden;
+			}
+			.page_recommend{
+				width:100% !important;
+				overflow:hidden;
+			}
 
+			.CategoryId_box, .SubCategoryId_box{
+				width:unset !important;
+			}
+			.Sorted_style{
+				width:unset !important;
+			}
+			.p_list ul{
+				display:flex;
+				flex-wrap:wrap;
+				justify-content:space-around;
+			}
+			.gl-item{
+			    width: 45%;
+				border:none;
+			}
+			.gl-item .Borders{
+				padding:0;
+				width:unset;
+				margin:0!important;
+			}
+			.gl-item img{
+				width: 100%!important;
+				height: unset !important;
+			}
+			.Inside_pages .Pagination{
+				width:unset;
+			}
+	    }
+
+		#pager{
+			
+    display: flex;
+    justify-content: center;
+		}
+		#pager .active{
+			color: #999999;
+			margin: 0px 5px;
+			font-size: 14px;
+			padding: 5px 15px;
+			border: 1px solid #ddd;
+			background-color:#ff7200;
+		}
+	 
+	</style>
 	<!--产品列表样式-->
 	<div class="Inside_pages clearfix">
 		<!--位置-->
@@ -150,10 +216,10 @@
 				<div id="Sorted">
 					<div class="Sorted">
 						<div class="Sorted_style">
-							<a href="Detail.aspx" class="on">综合<i class="iconfont icon-fold"></i></a>
-							<a href="Detail.aspx">销量<i class="iconfont icon-fold"></i></a>
-							<a href="Detail.aspx">价格<i class="iconfont icon-fold"></i></a>
-							<a href="Detail.aspx">新品<i class="iconfont icon-fold"></i></a>
+							<a href="#" class="on">综合<i class="iconfont icon-fold"></i></a>
+							<a href="#">销量<i class="iconfont icon-fold"></i></a>
+							<a href="#">价格<i class="iconfont icon-fold"></i></a>
+							<a href="#">新品<i class="iconfont icon-fold"></i></a>
 						</div>
 						<!--产品搜索-->
 						<div class="products_search">
@@ -187,7 +253,7 @@
 			<li class="gl-item">
 				<em class="icon_special tejia"></em>
 				<div class="Borders">
-					<div class="img"><a href="Detail.aspx?id={{= Id}}"><img src="<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString %>upload/{{= Picture}}"
+					<div class="img"><a href="Detail.aspx?id={{= Id}}"><img src="http://<%= ConfigurationManager.ConnectionStrings["manageUri"].ConnectionString %>upload/{{= Picture}}"
 								style="width:220px;height:220px"></a></div>
 					<div class="Price"><b>¥{{= Price}}</b><span>[¥49.01/500g]</span></div>
 					<div class="name"><a href="Detail.aspx">{{= Name}} {{= Description}}</a></div>
