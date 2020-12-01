@@ -74,7 +74,7 @@
                         type: "GetAllByPage",
                         pageIndex: 1,
                         pageSize: 999,
-                        ParentId: ParentId
+                        ParentId: ParentId ? ParentId:0
                     },
                     success: r
                 });
@@ -108,6 +108,7 @@
                 $('#CategoryId')[0].dispatchEvent(new Event('change'))
                 $("#Picture_img").attr('src', '/upload/'+param['Picture'])
             });
+
             $("#Picture_img").click(function () {
                 $('#Picture').trigger('click');
                 //if (window.FileReader) {

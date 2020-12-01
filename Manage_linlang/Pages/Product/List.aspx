@@ -122,8 +122,8 @@
                 pageSize: 5,
             },
             getData() {
-                pageObj.option.CategoryId = $('#CategoryId').val()
-                pageObj.option.SubCategoryId = $('#SubCategoryId').val()
+                pageObj.option.CategoryId = $('#CategoryId').val();
+                pageObj.option.SubCategoryId = $('#SubCategoryId').val();
                 $.ajax({
                     url: '/Ajax/Product.ashx?type=GetAllByPage',
                     method: 'post',
