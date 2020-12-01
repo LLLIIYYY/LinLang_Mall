@@ -16,6 +16,7 @@
 	<script src="/Content/js/common_js.js" type="text/javascript"></script>
 	<script src="/Content/js/footer.js" type="text/javascript"></script>
 	<script src="/Content/js/validator.js"></script>
+	<script src="/Content/js/layer/layer.js"></script>
 	<title>用户注册</title>
 </head>
 
@@ -66,7 +67,7 @@
 						</div>
 						<div class="center clearfix">
 							<!-- <a class="btn_pink" id="btn_signin" href="javascript:void(0)">立即注册</a> -->
-							<a class="btn_pink" style="width:40%;float:left" id="btn_signin">立即注册
+							<a class="btn_pink" style="width:40%;float:left;cursor:pointer" id="btn_signin">立即注册
 							</a>
 							<a class="btn_register" id="btn_signin" href="Login">登录
 							</a>
@@ -78,32 +79,69 @@
 	</div>
 	<script type="text/javascript">
 		$(function () {
-			$('#btn_signin').on('click', function () {
-				//定义即将发送到服务器的数据对象
-				var userName = $('#user_text').val();
-				var userPWD = $('#tbPassword').val();
-				var userPWD_cfm = $('#confirm_pwd_text').val();
-				var captcha = $('#Codes_text').val();
-
-				var postData = {
-					loginId: userName,
-					loginPWD: userPWD,
-					loginPWD_cfm: userPWD_cfm,
-					captcha: captcha,
-                    type:'Register',
-				}
-
-
-				//$('#myform').submit();
-                $.ajax({
-                    url: '/AJAX/User.ashx',
-                    method: 'post',
-                    dataType: 'json',
-                    data: postData,//要发送到服务器的数据
-					success: function (reslut) {
-						alert(reslut.Message);
+            var validator = new Validator('myform', [
+                {
+                    name: "userName",
+                    display: "必填字段不能为空|字数小于6个字符|大于12个字符",
+                    rules: 'required|min_length(6)|max_length(12)'
+                }, {
+                    name: "Password",
+                    display: "必填字段不能为空|字数小于6个字符|大于12个字符",
+                    rules: 'required|min_length(6)|max_length(12)'
+                }, {
+                    name: "Password_cfm",
+                    display: "必填字段不能为空|两次密码不相同",
+                    rules: 'required|equalTo("#Password")'
+                }
+            ],
+                function (obj, evt) {
+                    if (obj.errors.length > 0) {
+                        var errorobj = obj.errors[0];
+                        layer.tips(errorobj.message, '#' + errorobj.id, {
+                            tips: [2, '#ff6600'],
+                            time: 4000
+						})
+						console.log(errorobj);
+                        return;
+					}
+                    if ($('#tbPassword').val() != $('#confirm_pwd_text').val()) {
+                        layer.tips("两次密码不同", '#confirm_pwd_text', {
+							tips: [2, '#ff6600'],
+							time: 4000
+						});
+						return;
                     }
+
+                    //定义即将发送到服务器的数据对象
+                    var userName = $('#user_text').val();
+                    var userPWD = $('#tbPassword').val();
+                    var userPWD_cfm = $('#confirm_pwd_text').val();
+                    var captcha = $('#Codes_text').val();
+
+                    var postData = {
+                        loginId: userName,
+                        loginPWD: userPWD,
+                        loginPWD_cfm: userPWD_cfm,
+                        captcha: captcha,
+                        type: 'Register',
+                    }
+
+
+                    //$('#myform').submit();
+                    $.ajax({
+                        url: '/AJAX/User.ashx',
+                        method: 'post',
+                        dataType: 'json',
+                        data: postData,//要发送到服务器的数据
+                        success: function (reslut) {
+                            alert(reslut.Message);
+                        }
+                    });
                 });
+
+
+			$('#btn_signin').on('click', function () {
+				validator.validate();
 			});
 		});
     </script>
