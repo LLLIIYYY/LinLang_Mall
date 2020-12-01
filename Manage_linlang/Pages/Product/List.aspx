@@ -18,13 +18,15 @@
                 <label for="CategoryId" class="col-sm-1 control-label">一级类别</label>
                 <div class="col-sm-5">
                     <select class="form-control" id="CategoryId" name="CategoryId">
-                        <option value="-1">无</option>
+                        <option value="-1">全部</option>
+                        <option value="0">无</option>
                     </select>
                 </div>
                 <label for="SubCategoryId" class="col-sm-1 control-label">二级类别</label>
                 <div class="col-sm-5">
                     <select class="form-control" id="SubCategoryId" name="SubCategoryId">
-                        <option value="-1">无</option>
+                        <option value="-1">全部</option>
+                        <option value="0">无</option>
                     </select>
                     </div>
             </div>
@@ -88,7 +90,7 @@
         }
 
         getPC(-1, r => {
-            let p_Html = '<option value="-1">无</option>';
+            let p_Html = '<option value="-1">全部</option><option value="0">无</option>';
             r.Data.list.forEach(pc => {
                 p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
                 $("#CategoryId").html(p_Html);
@@ -96,8 +98,9 @@
         });
 
         $('#CategoryId').on('change', function () {
-            getPC($(this).val(), r => {
-                let p_Html = '<option value="-1">无</option>';
+            let parentVal = $(this).val();
+            getPC(parentVal, r => {
+                let p_Html = '<option value="-1">全部</option><option value="0">无</option>';
                 r.Data.list.forEach(pc => {
                     p_Html += "<option value='" + pc.Id + "'>" + pc.Category + "</option>";
                     $("#SubCategoryId").html(p_Html);
@@ -105,11 +108,18 @@
             });
         });
 
+        $("tbody").on("click", ".btn-delete", function () {
+            pageObj.remove($.tmplItem(this).data);
+        });
+        $("tbody").on("click", ".btn-update", function () {
+            pageObj.update($.tmplItem(this).data);
+        });
+
         var pageObj = {
             option: {
                 type:'get',
                 pageIndex:1,
-                pageSize: 10,
+                pageSize: 5,
             },
             getData() {
                 pageObj.option.CategoryId = $('#CategoryId').val()
@@ -124,6 +134,23 @@
                         renderPager(res.Data.pageCount, pageObj.option.pageIndex);
                     }
                 })
+            },
+            remove(data) {
+                console.log(data)
+                if (confirm("你确认删除吗?"))
+                    $.ajax({
+                        url: '/Ajax/Product.ashx?type=Delete',
+                        method: 'post',
+                        dataType: 'json',
+                        data: data,
+                        success: function (res) {
+                            alert(res.Message);
+                            window.location.reload();
+                        }
+                    })
+            },
+            update(data) {
+                window.location = "/Pages/Product/Update#" + util.obj2UrlParam(data);
             }
         }
         pageObj.getData();

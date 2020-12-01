@@ -58,24 +58,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="HoldingStock" class="col-sm-2 control-label">库存</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="HoldingStock" name="HoldingStock" placeholder="库存">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="ActualStock" class="col-sm-2 control-label">实际库存</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="ActualStock" name="ActualStock" placeholder="实际库存">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="AvailableStock" class="col-sm-2 control-label">可用库存</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="AvailableStock" name="AvailableStock" placeholder="可用库存">
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <a class="btn btn-default" id="btn_signin">保存</a>
                 </div>

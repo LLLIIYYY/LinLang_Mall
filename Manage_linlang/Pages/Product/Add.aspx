@@ -15,7 +15,6 @@
                 <label for="CategoryId" class="col-sm-2 control-label">一级类别</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="CategoryId" name="CategoryId">
-                        <option>空</option>
                         <option value="0">无</option>
                     </select>
                 </div>
@@ -24,7 +23,6 @@
                 <label for="SubCategoryId" class="col-sm-2 control-label">二级类别</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="SubCategoryId" name="SubCategoryId">
-                        <option>空</option>
                         <option value="0">无</option>
                     </select>
                 </div>
